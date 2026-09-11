@@ -528,18 +528,23 @@
 			<section>
 				<h2>Lecture 8 The Product Rule</h2>
 				<p>
-					<strong>Goal</strong> Be able to differentiate fcns of the
+					<strong>Goal:</strong> Be able to differentiate functions of the
 					form \( f(x) g(x) \)
 				</p>
 				<p>
 					Question: Does \( \frac{d}{dt}(f(t) g(t)) =
 					\frac{d}{dt}(f(t)) \cdot \frac{d}{dt}(g(t)) \)?
 				</p>
-				<p>Answer: No!</p>
+				<p>Answer: No! Consider \(f(t) = 1\) and \(g(t) = t\)</p>
 				\[ \begin{gathered} \frac{d}{dt}(1 \cdot t) = 1 \\[0.5em]
 				\frac{d}{dt}(1) \cdot \frac{d}{dt}(t) = 1 \cdot 0 = 0
 				\end{gathered} \]
-				<p>Let's take a tiny step in time:</p>
+				<p>To derive the product rule, imagine \(f(t)g(t)\) as the area 
+					of a rectangle with sides \(f(t)\) and \(g(t)\). Since the side lengths 
+					are changing with time, if we take a tiny step in time \((\Delta t)\), there 
+					will be change to the length \((\Delta f(t))\) and the width \((\Delta g(t))\). We want to find the change in 
+					the area \(\Delta (f(t)g(t))\). 
+				</p>
 				<figure>
 					<img
 						id="p1_fig_1"
@@ -568,35 +573,46 @@
 						</details>
 					</figcaption>
 				</figure>
-				\[ \Delta(f(t) g(t)) = \text{Area of Shaded Region} \] \[ =
-				\Delta f(t) \cdot g(t) + f(t) \Delta g(t) + \left[
-				\begin{array}{c} \text{Something} \\ \to 0 \text{ as} \\ \Delta
-				t \to 0 \end{array} \right] \]
-				<p>Divide by \( \Delta t \)</p>
-				\[ \frac{\Delta(f(t) g(t))}{\Delta t} = \frac{\Delta
-				f(t)}{\Delta t} g(t) + f(t) \frac{\Delta g(t)}{\Delta t} +
-				[\text{"}] \]
-				<p>Take \( \Delta t \to 0 \)</p>
+				\begin{align*} 
+				\Delta(f(t) g(t)) =&~ \text{Area of Shaded Region}\\[1em]
+					=&~ \Delta f(t) \cdot g(t) + f(t) \Delta g(t) + (\Delta f(t))(\Delta g(t))\\[1em]
+				\frac{\Delta(f(t)g(t))}{\Delta t} =&~ \frac{\Delta f(t)}{\Delta t} \cdot g(t) + f(t) \cdot\frac{\Delta g(t)}{\Delta t} + \Delta f(t)\cdot\frac{\Delta g(t)}{\Delta t}\\[1em] 
+				\frac{\Delta(f(t)g(t))}{\Delta t} =&~ \frac{\Delta f(t)}{\Delta t} \cdot g(t) + f(t) \cdot\frac{\Delta g(t)}{\Delta t} + \Delta t \cdot\frac{\Delta f(t)}{\Delta t}\cdot\frac{\Delta g(t)}{\Delta t}\\[1em]
+				\end{align*}
+				
+				<p>Take \( \Delta t \to 0 \) to get \(\displaystyle \frac{\Delta f(t)}{\Delta t} \to \dfrac{df}{dt}\) and \(\displaystyle \frac{\Delta g(t)}{\Delta t} \to \dfrac{dg}{dt}\). This 
+					gets us the equations in the theorem below. 
+				</p>
 				<section>
 					<h3>Theorem (Product Rule)</h3>
 					<p>
 						Let \( f(x) \) and \( g(x) \) be differentiable
-						functions Then.
+						functions. Then,
 					</p>
-					\[ \begin{gathered} \frac{d}{dx}(f(x) g(x)) = \frac{df}{dx}
-					\cdot g(x) + f(x) \cdot \frac{dg}{dx} \\[0.5em] [f(x) g(x)]'
-					= f'(x) g(x) + f(x) g'(x) \end{gathered} \]
-					<p>
-						<strong>"left"</strong><strong>"right"</strong
-						><strong>"right d-left plus left right"</strong>
-					</p>
+					\begin{align*} 
+						\frac{d}{dx}(f(x) g(x)) =&~ \frac{df}{dx}
+					\cdot g(x) + f(x) \cdot \frac{dg}{dx} \quad \text{(In Leibniz notation)}\\[0.5em]
+					[f(x) g(x)]'
+					=&~ f'(x) g(x) + f(x) g'(x)\quad\text{(In Newton/Prime notation)}
+					\end{align*}
+					There is a mnemonic to help memorize this formula. If we consider \(f(x)\) as the "left" function and 
+					\(g(x)\) as the "right" function, then to take the derivative it is "right d-left plus left d-right" (where "d"
+					refers to taking the derivative).
 				</section>
 				<section>
 					<h3>Example 1</h3>
-					\[ \begin{gathered} \frac{d}{dx}(x^3) = 3x^2 \\[0.5em]
-					\frac{d}{dx}(x^3) = \frac{d}{dx}(x \cdot x^2) = [x]' \cdot
-					x^2 + x \cdot [x^2]' \\[0.5em] = 1 \cdot x^2 + x \cdot 2x
-					\\[0.5em] = x^2 + 2x^2 = 3x^2 \checkmark \end{gathered} \]
+					As a sanity check, we already know \(\frac{d}{dx}(x^3) = 3x^2 \). Let's use the Product Rule 
+					to differentiate \(x^3\) and see if we get the same answer. 
+					\begin{align*} 
+						\frac{d}{dx}(x^3) =&~ \frac{d}{dx}(x \cdot x^2)\\[0.5em]
+					=&~ [x]' \cdot
+					x^2 + x \cdot [x^2]' \\[0.5em]
+					 =&~ 1 \cdot x^2 + x \cdot 2x
+					\\[0.5em]
+					 =&~ x^2 + 2x^2\\[0.5em] 
+					 =&~ 3x^2 \checkmark
+					\end{align*} 
+				
 					<div class="callout note">
 						<svg
 							aria-hidden="true"
@@ -608,9 +624,9 @@
 						<div>
 							<p class="callout-title">NOTE:</p>
 							<p>
-								This gives us a way of computing \(
+								By continuing Example 1, this gives us a way of computing \(
 								\frac{d}{dx}(x^n) \) for an integer \( n \ge 0
-								\) by continuing Ex. 1.
+								\).
 							</p>
 							\[ \begin{gathered} x^4 = x \cdot x^3 \\[0.5em] x^5
 							= x \cdot x^4 \\[0.5em] \vdots \end{gathered} \]
@@ -623,10 +639,14 @@
 				</section>
 				<section>
 					<h3>Example 2</h3>
-					\[ \begin{gathered} \frac{d}{dx}(2 \sin x \cos x) = [2 \sin
-					x]' \cos x + 2 \sin x [\cos x]' \\[0.5em] = 2 \cos x \cos x
-					+ 2 \sin x (-\sin x) \\[0.5em] = 2 [\cos^2 x - \sin^2 x]
-					\end{gathered} \]
+					\begin{align*} 
+						\frac{d}{dx}(2 \sin x \cos x) =&~ [2 \sin
+					x]' \cos x + 2 \sin x [\cos x]' \\[0.5em] 
+					=&~ 2 \cos x \cos x
+					+ 2 \sin x (-\sin x) \\[0.5em] 
+					=&~ 2 [\cos^2 x - \sin^2 x]
+					\end{align*}
+				
 				</section>
 				<section>
 					<h3>Example 3</h3>
@@ -637,11 +657,21 @@
 					<ol type="a">
 						<li>
 							<p>Compute \( h'(x) \)</p>
-							\[ \begin{gathered} f(x) = x^{10} + x + 1
-							\longrightarrow f'(x) = 10x^9 + 1 \\[0.5em] g(x) =
-							x^2 + 9 \longrightarrow g'(x) = 2x \\[0.5em] h'(x) =
-							f'(x) g(x) + f(x) g'(x) \\[0.5em] = (10x^9 + 1)(x^2
-							+ 9) + (x^{10} + x + 1)(2x) \end{gathered} \]
+							<p>Another way to tackle these kinds of problems (especially if your function is very
+								complicated) is to find \(f(x), f'(x), g(x)\), and \(g'(x)\) on their own:</p>
+							\begin{align*} 
+								f(x) =&~ x^{10} + x + 1
+							\longrightarrow f'(x) = 10x^9 + 1 \\[0.5em] g(x) =&~ 
+							x^2 + 9 \longrightarrow g'(x) = 2x
+							\end{align*} 
+
+							Then, combine them at the end using the Product Rule: 
+							\begin{align*}
+							h'(x) =&~ 
+							f'(x) g(x) + f(x) g'(x) \\[0.5em] =&~ (10x^9 + 1)(x^2
+							+ 9) + (x^{10} + x + 1)(2x)
+							\end{align*} 
+								
 						</li>
 						<li>
 							<p>Compute \( h'(1) \)</p>
@@ -652,32 +682,66 @@
 				<section>
 					<h3>Example 4</h3>
 					<p>Compute \( h'(x) \) if \( h(x) = (x+1)(2x+1)(3x+1) \)</p>
-					\[ \begin{gathered} h'(x) = [x+1]'(2x+1)(3x+1) + (x+1)\left[
-					(2x+1)(3x+1) \right]' \\[0.5em] = (2x+1)(3x+1) + (x+1)\left[
-					[2x+1]'(3x+1) + (2x+1)[3x+1]' \right] \\[0.5em] =
-					(2x+1)(3x+1) + (x+1)\left[ 2(3x+1) + (2x+1)\cdot 3 \right]
-					\\[0.5em] = 1 \cdot (2x+1)(3x+1) + (x+1)\cdot 2 \cdot (3x+1)
-					+ (x+1)(2x+1)\cdot 3 \end{gathered} \]
+					\begin{align*} 
+						 h'(x) =&~ [x+1]'(2x+1)(3x+1) + (x+1)\left[
+					(2x+1)(3x+1) \right]' \\[0.5em] 
+					=&~ (2x+1)(3x+1) + (x+1)\left[
+					[2x+1]'(3x+1) + (2x+1)[3x+1]' \right] \\[0.5em] 
+					=&~ (2x+1)(3x+1) + (x+1)\left[ 2(3x+1) + (2x+1)\cdot 3 \right]
+					\\[0.5em] 
+					=&~ 1 \cdot (2x+1)(3x+1) + (x+1)\cdot 2 \cdot (3x+1)
+					+ (x+1)(2x+1)\cdot 3 
+					\end{align*}
+				In other words, we can take the derivative if there are more than 2 functions 
+				being multiplied together. Though, it requires using the Product Rule more than once. 
 				</section>
 				<section>
 					<h3>Example 5</h3>
-					<p>Find the equation of the line tangent to</p>
-					\[ \begin{gathered} h(x) = (\sqrt{x} + 4)\left(
-					x^{\frac{3}{4}} - 2x \right) \quad \text{at} \quad x = 16
-					\\[0.5em] f(x) = \sqrt{x} + 4 \qquad f'(x) =
-					\frac{1}{2\sqrt{x}} \\[0.5em] f(16) = 4 + 4 = 8 \qquad
-					f'(16) = \frac{1}{2\cdot 4} = \frac{1}{8} \\[0.5em] g(x) =
-					x^{\frac{3}{4}} - 2x \qquad g'(x) = \frac{3}{4}
-					x^{-\frac{1}{4}} - 2 \\[0.5em] g(16) = 8 - 32 = -24 \qquad =
-					\frac{3}{4 \cdot \sqrt[4]{x}} - 2 \\[0.5em] g'(16) =
-					\frac{3}{8} - 2 = -\frac{13}{8} \\[0.5em] \text{Slope}: \;
-					h'(16) = f'(16) g(16) + f(16) g'(16) \\[0.5em] =
-					\frac{1}{8}(-24) + 8\left( \frac{-13}{8} \right) = -3 - 13 =
-					-16 \\[0.5em] \text{Point}: \; x\text{-coord}: \; x = 16
-					\\[0.5em] y\text{-coord}: \; h(16) = f(16) g(16) = 8(-24) =
-					-192 \\[0.5em] \text{Eq}: \; y + 192 = -16(x - 16) \implies
-					y = -16x + (256 - 192) \\[0.5em] \boxed{y = -16x + 64}
-					\end{gathered} \]
+					<p>Find the equation of the line tangent to \(h(x) = (\sqrt{x} + 4)\left(
+					x^{\frac{3}{4}} - 2x \right)\) at \(x = 16\).</p>
+
+					We need to find \(h'(16)\). One way to do it is to compute \(h'(x)\), then plug in 16 
+					(like what we did in Example 3(b)). Another way is to write \(h'(16) = f'(16)g(16) + f(16)g'(16)\); here, 
+					we find \(f(16), f'(16), g(16),\) and \(g'(16)\) seprately:
+					
+					\begin{align*} 
+						f(x) =&~ \sqrt{x} + 4\\[0.5em]
+						 f(16) =&~ 4 + 4 \\[0.5em]
+						 =&~ 8
+					\end{align*} 
+					\begin{align*} 
+						f'(x) =&~ \frac{1}{2\sqrt{x}}\\[0.5em]
+						f'(16) =&~ \frac{1}{2\cdot 4} \\[0.5em]
+						=&~ \frac{1}{8}
+					\end{align*} 
+					\begin{align*} 
+						g(x) =&~ x^{\frac{3}{4}} - 2x \\[0.5em]
+						 g(16) =&~ 8 - 32 \\[0.5em]
+						 =&~ -24
+					\end{align*} 
+					\begin{align*} 
+						g'(x) =&~ \frac{3}{4}x^{-\frac{1}{4}} - 2\\[0.5em]
+						=&~\frac{3}{4 \cdot \sqrt[4]{x}} - 2\\[0.5em]
+						g'(16) =&~ \frac{3}{8} - 2 \\[0.5em]
+						=&~ -\frac{13}{8}
+					\end{align*} 
+					Then, combine everything using the Product Rule:
+					\begin{align*} 
+					\text{Slope}: \; h'(16) =&~ f'(16) g(16) + f(16) g'(16) \\[0.5em]
+		  			=&~	\frac{1}{8}(-24) + 8\left( \frac{-13}{8} \right) \\[0.5em]
+					=&~ -3 - 13 \\[0.5em]
+					=&~-16 
+					\end{align*} 
+					We now finish the problem:
+					\begin{align*} 
+						\text{Point}: \; x\text{-coord}: \; x =&~  16\\[0.5em]
+						y\text{-coord}: \; h(16) =&~ f(16) g(16) \\[0.5em]
+						=&~ 8(-24)\\[0.5em] 
+						=&~-192 \\[0.5em]
+						\text{Equation}: \; y + 192 =&~ -16(x - 16)\\[0.5em] 
+					y =&~ -16x + (256 - 192)\\[0.5em] 
+					y =&~ -16x + 64
+					\end{align*} 
 				</section>
 				<section>
 					<h3>Example 6</h3>
@@ -685,21 +749,34 @@
 						When does \( y = 10x^5 e^x \) have a horizontal tangent
 						line?
 					</p>
-					\[ \begin{gathered} y' = 50x^4 e^x + 10x^5 e^x \\[0.5em] =
-					10x^4 e^x (5+x) \overset{\text{set}}{=} 0 \\[0.5em] 10x^4 =
+
+					
+					\begin{align*} 
+					y' =&~ 50x^4 e^x + 10x^5 e^x \\[0.5em] 
+					=&~ 10x^4 e^x (5+x)\\[0.5em]
+					 \overset{\text{set}}{=}&~ 0  
+					\end{align*} 
+					
+					If a product equals 0, then at least one of the factors is 0. I.e., either 
+					\[\begin{gathered}10x^4 =
 					0 \quad \text{OR} \quad e^x = 0 \quad \text{OR} \quad 5 + x
 					= 0 \\[0.5em] \boxed{x = 0} \qquad \text{Never} \qquad
 					\boxed{x = -5} \end{gathered} \]
 				</section>
 				<section>
 					<h3>Example 7</h3>
-					<p>Compute \( h'(x) \) if</p>
-					\[ \begin{gathered} h(x) = 6e^x \sin x - 13 e^x \cos x
-					\\[0.5em] = e^x (6 \sin x - 13 \cos x) \\[0.5em] \implies
-					h'(x) = e^x (6 \sin x - 13 \cos x) + e^x (6 \cos x + 13 \sin
-					x) \\[0.5em] = e^x (6 \sin x - 13 \cos x + 6 \cos x + 13
-					\sin x) \\[0.5em] = e^x (19 \sin x - 7 \cos x)
-					\end{gathered} \]
+					<p>Compute \( h'(x) \) if \(h(x) = 6e^x \sin x - 13 e^x \cos x\)</p>
+
+					The main idea here is we want to factor out that \(e^x\) to get \(h(x)=e^x(6\sin x - 13 \cos x)\). Now, 
+					as opposed to needing to do the Product Rule twice, we only need to do it once. 
+
+					\begin{align*} 
+					h'(x) =&~ e^x (6 \sin x - 13 \cos x) + e^x (6 \cos x + 13 \sin
+					x) \\[0.5em] 
+					=&~ e^x (6 \sin x - 13 \cos x + 6 \cos x + 13
+					\sin x) \\[0.5em] 
+					=&~  e^x (19 \sin x - 7 \cos x)
+					\end{align*} 
 				</section>
 			</section>
 		</article>
