@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>
+			Lecture 11: The Derivative of ln x and Logarithmic Differentiation
+		</title>
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [['\\(', '\\)']],
+					displayMath: [['\\[', '\\]']],
+					processEscapes: true
+				},
+				options: {
+					skipHtmlTags: [
+						'script',
+						'noscript',
+						'style',
+						'textarea',
+						'code',
+						'pre'
+					]
+				}
+			}
+		</script>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+		<script>
+			window.D2L = { mathJaxLoaded: true }
+		</script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+			:root {
+				--purple: #581c87;
+				--purple-50: #faf5ff;
+				--purple-100: #f3e8ff;
+				--indigo-600: #4f46e5;
+				--indigo-50: #eef2ff;
+				--slate-900: #1e293b;
+				--slate-700: #334155;
+				--slate-400: #595959;
+				--slate-300: #cbd5e1;
+				--slate-200: #e2e8f0;
+				--slate-50: #f8fafc;
+				--rose-500: #f43f5e;
+				--rose-700: #be123c;
+				--rose-50: #fff1f2;
+				--emerald-600: #059669;
+				--emerald-700: #047857;
+				--emerald-50: #ecfdf5;
+				--amber-600: #d97706;
+				--amber-700: #b45309;
+				--amber-50: #fffbeb;
+				--fg-1: var(--slate-900);
+				--fg-2: var(--slate-700);
+				--fg-3: var(--slate-400);
+				--border: var(--slate-200);
+				--rule: var(--slate-300);
+				--accent: var(--purple);
+				--bg: #ffffff;
+				--bg-soft: var(--slate-50);
+				--font-display:
+					'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI',
+					sans-serif;
+				--font-body:
+					'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+					Roboto, sans-serif;
+				--font-mono:
+					ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas,
+					monospace;
+				--measure: 68ch;
+			}
+			#main * {
+				box-sizing: border-box;
+			}
+			html {
+				-webkit-text-size-adjust: 100%;
+			}
+			body {
+				margin: 0;
+				background: var(--bg);
+				color: var(--fg-1);
+				font-family: var(--font-body);
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				text-rendering: optimizeLegibility;
+				-webkit-font-smoothing: antialiased;
+			}
+			#main {
+				max-width: 920px;
+				margin: 0 auto;
+				padding: 4rem 3.5rem 6rem;
+			}
+			@media (max-width: 640px) {
+				#main {
+					padding: 2rem 1.25rem 4rem;
+				}
+				body {
+					font-size: 1rem;
+				}
+			}
+			#main > * + * {
+				margin-top: 1.1em;
+			}
+			a:focus-visible {
+				outline: 3px solid var(--accent);
+				outline-offset: 2px;
+				border-radius: 2px;
+			}
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-family: var(--font-display);
+				margin: 2.2em 0 0.4em;
+				font-weight: 700;
+				line-height: 1.25;
+				letter-spacing: -0.01em;
+			}
+			h2 {
+				font-size: 2.25rem;
+				margin-top: 1.6em;
+				letter-spacing: -0.014em;
+			}
+			h3 {
+				font-size: 1.75rem;
+				letter-spacing: -0.012em;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid var(--border);
+			}
+			h4 {
+				font-size: 1.375rem;
+			}
+			h5 {
+				font-size: 1.125rem;
+				color: var(--fg-2);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+			h6 {
+				font-size: 1rem;
+			}
+			p {
+				margin: 0 0 1.1em;
+			}
+			strong {
+				font-weight: 700;
+			}
+			em {
+				font-style: italic;
+			}
+			small {
+				font-size: 0.85em;
+				color: var(--fg-2);
+			}
+			del {
+				color: var(--fg-3);
+			}
+			ins {
+				background: var(--emerald-50);
+				text-decoration: none;
+				padding: 0 0.125rem;
+				border-radius: 2px;
+			}
+			mark {
+				background: #fef9c3;
+				color: var(--slate-900);
+				padding: 0 0.1875rem;
+				border-radius: 2px;
+			}
+			sub,
+			sup {
+				font-size: 0.75em;
+			}
+			abbr[title] {
+				border-bottom: 1px dotted var(--fg-3);
+				cursor: help;
+			}
+			a {
+				color: var(--accent);
+				text-decoration: underline;
+				text-decoration-color: var(--purple-100);
+				text-underline-offset: 3px;
+				text-decoration-thickness: 1.5px;
+				transition: text-decoration-color 120ms;
+			}
+			a:hover {
+				text-decoration-color: var(--accent);
+			}
+			ul,
+			ol {
+				padding-left: 1.6em;
+			}
+			li {
+				margin: 0.35em 0;
+			}
+			ul ul,
+			ol ol,
+			ul ol,
+			ol ul {
+				margin-top: 0.35em;
+				margin-bottom: 0.35em;
+			}
+			dl {
+				display: grid;
+				grid-template-columns: max-content 1fr;
+				column-gap: 24px;
+				row-gap: 8px;
+			}
+			dt {
+				font-family: var(--font-display);
+				font-weight: 700;
+			}
+			dd {
+				margin: 0;
+				color: var(--fg-2);
+			}
+			blockquote {
+				margin: 1.6em 0;
+				padding: 0.875rem 1.375rem;
+				border-left: 4px solid var(--accent);
+				background: var(--purple-50);
+				border-radius: 0 12px 12px 0;
+				font-style: italic;
+			}
+			blockquote > :last-child {
+				margin-bottom: 0;
+			}
+			blockquote cite {
+				display: block;
+				margin-top: 0.5rem;
+				font-style: normal;
+				font-size: 0.85em;
+				color: var(--fg-2);
+			}
+			blockquote cite::before {
+				content: '— ';
+				color: var(--fg-3);
+			}
+			code {
+				font-family: var(--font-mono);
+				font-size: 0.88em;
+				background: var(--bg-soft);
+				color: var(--slate-900);
+				padding: 0.125rem 0.375rem;
+				border-radius: 6px;
+				border: 1px solid var(--border);
+			}
+			pre {
+				font-family: var(--font-mono);
+				font-size: 0.875rem;
+				line-height: 1.55;
+				background: var(--slate-900);
+				color: #e2e8f0;
+				padding: 1.125rem 1.375rem;
+				border-radius: 12px;
+				overflow-x: auto;
+				margin: 1.6em 0;
+			}
+			pre code {
+				background: transparent;
+				border: 0;
+				padding: 0;
+				font-size: inherit;
+				color: inherit;
+				border-radius: 0;
+			}
+			kbd {
+				font-family: var(--font-mono);
+				font-size: 0.82em;
+				padding: 0.125rem 0.4375rem;
+				background: #fff;
+				border: 1px solid var(--rule);
+				border-bottom-width: 2px;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 var(--rule);
+			}
+			mjx-container[jax][display='true'] {
+				display: block;
+				margin: 1.6em auto;
+				padding: 1.5rem 1.75rem;
+				background: var(--bg-soft);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				text-align: center;
+				font-family: var(--font-math);
+				font-size: 1.375rem;
+				overflow-x: auto;
+				position: relative;
+			}
+			figure,
+			figcaption details summary {
+				text-align: center;
+			}
+			figure {
+				margin: 2em 0;
+				padding: 0;
+			}
+			figure img,
+			figure svg,
+			figure video {
+				max-width: 100%;
+				height: auto;
+				border-radius: 10px;
+				background: var(--bg-soft);
+				border: 1px solid var(--border);
+			}
+			figcaption {
+				margin-top: 0.75rem;
+				font-size: 0.875rem;
+				color: var(--fg-2);
+				font-style: italic;
+				max-width: var(--measure);
+				margin-left: auto;
+				margin-right: auto;
+			}
+			figcaption details {
+				text-align: left;
+			}
+			figcaption strong {
+				font-style: normal;
+				color: var(--fg-1);
+			}
+			.table-wrap {
+				overflow-x: auto;
+				margin: 1.6em 0;
+			}
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				font-size: 0.9375rem;
+			}
+			thead th {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.75rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--fg-2);
+				text-align: left;
+				padding: 0.625rem 0.875rem;
+				border-bottom: 2px solid var(--rule);
+			}
+			tbody td {
+				padding: 0.625rem 0.875rem;
+				border-bottom: 1px solid var(--border);
+			}
+			tbody tr:hover td {
+				background: var(--bg-soft);
+			}
+			tfoot td {
+				padding: 0.625rem 0.875rem;
+				font-family: var(--font-display);
+				font-weight: 700;
+				border-top: 2px solid var(--rule);
+			}
+			.callout {
+				display: grid;
+				grid-template-columns: 28px 1fr;
+				gap: 14px;
+				padding: 1rem 1.125rem;
+				border-radius: 12px;
+				border-left: 4px solid;
+				margin: 1.6em 0;
+				align-items: start;
+			}
+			.callout > svg,
+			.conversion-error-title > svg {
+				width: 22px;
+				height: 22px;
+				margin-top: 0.125rem;
+				flex: 0 0 auto;
+			}
+			.callout > div > :first-child {
+				margin-top: 0;
+			}
+			.callout > div > :last-child {
+				margin-bottom: 0;
+			}
+			.callout p,
+			.conversion-error p {
+				font-size: 0.9375rem;
+			}
+			.callout-title,
+			.conversion-error-title {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.875rem;
+				letter-spacing: 0.02em;
+				margin: 0 0 0.25rem;
+			}
+			.callout.note {
+				background: var(--indigo-50);
+				border-color: var(--indigo-600);
+			}
+			.callout.tip {
+				background: var(--emerald-50);
+				border-color: var(--emerald-600);
+			}
+			.callout.warn {
+				background: var(--amber-50);
+				border-color: var(--amber-600);
+			}
+			.callout.danger {
+				background: var(--rose-50);
+				border-color: var(--rose-500);
+			}
+			.callout.note .callout-title {
+				color: var(--indigo-600);
+			}
+			.callout.tip .callout-title {
+				color: var(--emerald-700);
+			}
+			.callout.warn .callout-title {
+				color: var(--amber-700);
+			}
+			.callout.danger .callout-title {
+				color: var(--rose-700);
+			}
+			.callout.note > svg {
+				color: var(--indigo-600);
+			}
+			.callout.tip > svg {
+				color: var(--emerald-700);
+			}
+			.callout.warn > svg {
+				color: var(--amber-700);
+			}
+			.callout.danger > svg {
+				color: var(--rose-700);
+			}
+			.conversion-error {
+				background: var(--rose-50);
+				border: 2px solid var(--rose-700);
+				border-radius: 12px;
+			}
+			.conversion-error-title {
+				background: var(--rose-700);
+				color: #fff;
+				padding: 0 1.125rem 0.5rem 1.125rem;
+				display: flex;
+				border-radius: 10px 10px 0 0;
+			}
+			.conversion-error-title > svg {
+				margin: 0.5rem 1.35rem 0 0;
+			}
+			.conversion-error .conversion-error-title > p {
+				margin: 0.5rem 0 0 0;
+				padding: 0;
+			}
+			.conversion-error p {
+				padding: 0.5rem 1.125rem 0rem 1.125rem;
+			}
+			hr {
+				border: 0;
+				height: 1px;
+				background: var(--border);
+				margin: 2.2em 0;
+			}
+			.footnote-ref a {
+				font-size: 0.75em;
+				vertical-align: super;
+				padding: 0 0.25rem;
+				text-decoration: none;
+				color: var(--accent);
+				font-weight: 700;
+			}
+			.footnotes {
+				margin-top: 3em;
+				padding-top: 1.6em;
+				border-top: 1px solid var(--border);
+				font-size: 0.875rem;
+				color: var(--fg-2);
+			}
+			.footnotes ol {
+				padding-left: 1.4em;
+			}
+			.footnotes li {
+				margin: 0.5em 0;
+			}
+			.footnotes a.back {
+				margin-left: 0.375rem;
+				text-decoration: none;
+			}
+			@media print {
+				body {
+					font-size: 0.916667rem;
+					color: #000;
+					background: #fff;
+				}
+				#main {
+					max-width: none;
+					padding: 0;
+				}
+				h2 {
+					break-after: avoid;
+				}
+				figure,
+				pre,
+				.math-display,
+				table {
+					break-inside: avoid;
+				}
+				a {
+					color: #000;
+					text-decoration: underline;
+				}
+				a[href]::after {
+					content: ' (' attr(href) ')';
+					font-size: 0.85em;
+					color: #555;
+				}
+				.callout {
+					border-left-width: 3px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<article id="main">
+			<section>
+				<h2>Lecture 11: The Derivative of \( \ln x \)</h2>
+				<p>
+					<strong>GOAL:</strong> Differentiate \( \ln x \) and
+					introduce the technique of Logarithmic Differentiation.
+					Finish the proof of the Power Rule.
+				</p>
+				<p><strong>Summary:</strong></p>
+				\[ \begin{gathered} [\ln x]' = \frac{1}{x} \qquad [\log_b x]' =
+				\frac{1}{x \ln b} \\[0.5em] [\ln f(x)]' = \frac{f'}{f} \qquad
+				x^p = e^{p \ln x} \end{gathered} \]
+				<section>
+					<h3>Example 1</h3>
+					<p>Find \( y' \) if \( y = \dfrac{490t}{(t^2+7)^3} \)</p>
+					\[ \begin{gathered} [490t]' = 490 \\[0.5em]
+					\left[(t^2+7)^3\right]' = 3(t^2+7)^2 \cdot 2t =
+					6t\,(t^2+7)^2 \\[0.5em] y' = \frac{490\,(t^2+7)^3 -
+					490t\,(6t)\,(t^2+7)^2}{(t^2+7)^6} \end{gathered} \]
+					<p>
+						<strong>Goal</strong> Develop a tool to deal with this
+						issue.
+					</p>
+				</section>
+			</section>
+			<section>
+				<h2>Derivative of ln (x)</h2>
+				<p>
+					Recall \( \left[e^{f(x)}\right]' = e^{f(x)} \cdot f'(x) \).
+					We can use this to find \( \frac{d}{dx}(\ln x) \)
+				</p>
+				\[ \begin{gathered} f(x) = \ln x \\[0.5em] e^{f(x)} = e^{\ln x}
+				\\[0.5em] e^{f(x)} = x \\[0.5em]
+				\frac{d}{dx}\left(e^{f(x)}\right) = \frac{d}{dx}(x) \\[0.5em]
+				e^{f(x)} \cdot f'(x) = 1 \\[0.5em] f'(x) = \frac{1}{e^{f(x)}} =
+				\frac{1}{e^{\ln x}} = \frac{1}{x} \end{gathered} \]
+				<section>
+					<h3>Theorem</h3>
+					<ol>
+						<li>\[ \frac{d}{dx}(\ln x) = \frac{1}{x} \]</li>
+						<li>
+							If \( f \) is a differentiable function: \[
+							\frac{d}{dx}\left[\ln(f(x))\right] = \frac{1}{f(x)}
+							\cdot \left[f(x)\right]' = \frac{f'(x)}{f(x)} \]
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Example 2</h3>
+					<p>Find \( y' \) if \( y = \ln(x^2-1) \)</p>
+					<p><strong>METHOD 1:</strong></p>
+					\[ y' = \left[\ln(x^2-1)\right]' = \frac{1}{x^2-1} \cdot 2x
+					= \frac{2x}{x^2-1} \]
+					<p><strong>METHOD 2:</strong></p>
+					\[ \begin{gathered} y = \ln(x^2-1) =
+					\ln\left[(x-1)(x+1)\right] \\[0.5em] y = \ln(x-1) + \ln(x+1)
+					\\[0.5em] y' = \frac{1}{x-1}(1) + \frac{1}{x+1}(1) \\[0.5em]
+					= \frac{1}{x-1} + \frac{1}{x+1} \\[0.5em] = \frac{x+1 +
+					x-1}{(x-1)(x+1)} = \frac{2x}{x^2-1} \end{gathered} \]
+				</section>
+				<section>
+					<h3>Example 3</h3>
+					<p>
+						Find \( y' \) if \( y =
+						\ln\left(\sqrt{\dfrac{x+1}{x^2+4}}\right) \)
+					</p>
+					\[ \begin{gathered} y =
+					\ln\left(\left[\frac{x+1}{x^2+4}\right]^{\frac{1}{2}}\right)
+					= \frac{1}{2}\ln\left(\left[\frac{x+1}{x^2+4}\right]\right)
+					\\[0.5em] = \frac{1}{2}\left[\ln(x+1) - \ln(x^2+4)\right]
+					\\[0.5em] y = \frac{1}{2}\ln(x+1) - \frac{1}{2}\ln(x^2+4)
+					\\[0.5em] y' = \frac{1}{2} \cdot \frac{1}{x+1} \cdot 1 -
+					\frac{1}{2} \cdot \frac{1}{x^2+4} \cdot 2x \\[0.5em] y' =
+					\frac{1}{2x+2} - \frac{x}{x^2+4} \end{gathered} \]
+				</section>
+				<section>
+					<h3>Example 4</h3>
+					<p>Find \( y' \) if \( y = \log x = \log_{10} x \)</p>
+					\[ \begin{gathered} y = \log_{10} x
+					\xrightarrow{\text{Change of Base Formula}} \frac{\ln x}{\ln
+					10} \\[0.5em] y' = \frac{1}{\ln 10}\left[\ln x\right]' =
+					\frac{1}{\ln 10} \cdot \frac{1}{x} = \frac{1}{x \ln 10}
+					\end{gathered} \]
+					<p>In general, for a base \( b > 0 \),</p>
+					\[ \frac{d}{dx}\left(\log_b x\right) = \frac{1}{x \ln b} \]
+				</section>
+			</section>
+			<section>
+				<h2>Logarithmic Differentiation</h2>
+				<p>Recall if \( y = f(x) \)</p>
+				\[ \left[\ln y\right]' = \left[\ln(f(x))\right]' =
+				\frac{1}{f(x)} \cdot f'(x) = \frac{y'}{y} \]
+				<p>We can use this to our advantage.</p>
+				<section>
+					<h3>Ex 5</h3>
+					<p>Find \( y' \) if \( y = \dfrac{490t}{(t^2+7)^3} \)</p>
+					\[ \begin{gathered} \ln y =
+					\ln\left(\frac{490t}{(t^2+7)^3}\right) = \ln(490t) -
+					\ln\left[(t^2+7)^3\right] \\[0.5em] = \ln 490 + \ln t -
+					\ln\left[(t^2+7)^{3}\right] \\[0.5em] \ln y = \ln 490 + \ln
+					t - 3\ln(t^2+7) \\[0.5em] \frac{y'}{y} = \frac{1}{t} - 3
+					\cdot \frac{1}{t^2+7} \cdot 2t \\[0.5em] \frac{y'}{y} =
+					\frac{1}{t} - \frac{6t}{t^2+7} \\[0.5em] y' =
+					y\left[\frac{1}{t} - \frac{6t}{t^2+7}\right] \end{gathered}
+					\]
+					<p><strong>\( y = \dfrac{490t}{(t^2+7)^3} \)</strong></p>
+					\[ y' = \frac{490t}{(t^2+7)^3}\left[\frac{1}{t} -
+					\frac{6t}{t^2+7}\right] \]
+				</section>
+				<section>
+					<h3>Example 6</h3>
+					<p>Find \( y' \) if \( y = (2x+1)^5(x^4-3)^6 \)</p>
+					\[ \begin{gathered} \ln y =
+					\ln\left[(2x+1)^5(x^4-3)^6\right] \\[0.5em] \ln y =
+					\ln\left[(2x+1)^{5}\right] + \ln\left[(x^4-3)^{6}\right]
+					\end{gathered} \]
+					<p><strong>\( \ln(a^b) = b\ln a \)</strong></p>
+					\[ \begin{gathered} \ln y = 5\ln(2x+1) + 6\ln(x^4-3)
+					\\[0.5em] \frac{y'}{y} = 5 \cdot \frac{1}{2x+1} \cdot 2 + 6
+					\cdot \frac{1}{x^4-3} \cdot 4x^3 \\[0.5em] \frac{y'}{y} =
+					\frac{10}{2x+1} + \frac{24x^3}{x^4-3} \\[0.5em] y' =
+					y\left[\frac{10}{2x+1} + \frac{24x^3}{x^4-3}\right]
+					\\[0.5em] y' = (2x+1)^5(x^4-3)^6\left[\frac{10}{2x+1} +
+					\frac{24x^3}{x^4-3}\right] \end{gathered} \]
+				</section>
+				<section>
+					<h3>Example 7</h3>
+					<p>Find \( y' \) if \( y = x^x \)</p>
+					\[ \begin{gathered} \ln y = \ln\left(x^{x}\right) = x \ln x
+					\\[0.5em] \ln y = x \ln x \\[0.5em] \frac{y'}{y} = 1 \cdot
+					\ln x + x \cdot \frac{1}{x} \\[0.5em] \frac{y'}{y} = \ln x +
+					1 \\[0.5em] y' = y\left[\ln x + 1\right] \\[0.5em] y' =
+					x^x\left[\ln x + 1\right] \end{gathered} \]
+				</section>
+				<section>
+					<h3>Example 8</h3>
+					<p>If \( y = (x^2-8x+2)\sqrt{25-x^2} \), find \( y' \).</p>
+					\[ \begin{gathered} \ln y =
+					\ln\left[(x^2-8x+2)\cdot\sqrt{25-x^2}\right] \\[0.5em] \ln y
+					= \ln\left(x^2-8x+2\right) + \ln\sqrt{25-x^2} \\[0.5em] \ln
+					y = \ln\left(x^2-8x+2\right) +
+					\frac{1}{2}\ln\left(25-x^2\right) \\[0.5em] \frac{y'}{y} =
+					\frac{1}{x^2-8x+2}(2x-8) +
+					\frac{1}{2}\cdot\frac{1}{25-x^2}(-2x) \\[0.5em] \frac{y'}{y}
+					= \frac{2x-8}{x^2-8x+2} - \frac{x}{25-x^2} \\[0.5em] y' =
+					y\left[\frac{2x-8}{x^2-8x+2} - \frac{x}{25-x^2}\right]
+					\\[0.5em] y' =
+					(x^2-8x+2)\sqrt{25-x^2}\left[\frac{2x-8}{x^2-8x+2} -
+					\frac{x}{25-x^2}\right] \end{gathered} \]
+				</section>
+				<section>
+					<h3>Example 9</h3>
+					<p>
+						Find \( y' \) if \( y =
+						\dfrac{(x-2)^5\sqrt{x^2+1}}{(x+3)^7} \)
+					</p>
+					\[ \begin{gathered} \ln y =
+					\ln\left[(x-2)^5\cdot\sqrt{x^2+1}\right] -
+					\ln\left[(x+3)^7\right] \\[0.5em] \ln y =
+					\ln\left(x+2\right)^5 + \ln\left(\sqrt{x^2+1}\right) -
+					\ln\left[(x+3)^7\right] \\[0.5em] \ln y = 5\ln(x+2) +
+					\frac{1}{2}\ln\left(x^2+1\right) - 7\ln(x+3) \\[0.5em]
+					\frac{y'}{y} = 5\cdot\frac{1}{x+2} +
+					\frac{1}{2}\cdot\frac{1}{x^2+1}\cdot 2x -
+					7\cdot\frac{1}{x+3} \\[0.5em] y' = y\left[\frac{5}{x+2} +
+					\frac{x}{x^2+1} - \frac{7}{x+3}\right] \\[0.5em] y' =
+					\frac{(x-2)^5\sqrt{x^2+1}}{(x+3)^7}\left[\frac{5}{x+2} +
+					\frac{x}{x^2+1} - \frac{7}{x+3}\right] \end{gathered} \]
+				</section>
+			</section>
+			<section>
+				<h2>Derivative of \( x^P \)</h2>
+				<p>If \( P \) is rational</p>
+				<p>
+					If \( P \) is irrational, then \( x^P \) is only defined for
+					\( x > 0 \)
+				</p>
+				\[ \begin{gathered} \left[x^P\right]' =
+				\left[e^{\ln\left(x^{P}\right)}\right]' = \left[e^{P\ln
+				x}\right]' \\[0.5em] = e^{P\ln x}\cdot P\cdot\frac{1}{x} =
+				x^P\cdot P\cdot\frac{1}{x} = P x^{P-1} \end{gathered} \]
+			</section>
+		</article>
+	</body>
+</html>
