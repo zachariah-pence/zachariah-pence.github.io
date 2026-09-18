@@ -523,6 +523,10 @@
 	</head>
 	<body>
 		<article id="main">
+			<p><strong>NOTE:</strong> You may view the original PDFs of the notes written
+				in class by clicking on the link for the <a href="../notes/lec11_130.pdf">1:30 Section</a>
+				or <a href="../notes/lec11_230.pdf">2:30 Section</a>, respectively.
+			</p>
 			<section>
 				<h2>Lecture 11: The Derivative of \( \ln x \)</h2>
 				<p>
@@ -539,25 +543,38 @@
 					<p>Find \( y' \) if \( y = \dfrac{490t}{(t^2+7)^3} \)</p>
 					\[ \begin{gathered} [490t]' = 490 \\[0.5em]
 					\left[(t^2+7)^3\right]' = 3(t^2+7)^2 \cdot 2t =
-					6t\,(t^2+7)^2 \\[0.5em] y' = \frac{490\,(t^2+7)^3 -
-					490t\,(6t)\,(t^2+7)^2}{(t^2+7)^6} \end{gathered} \]
+					6t\,(t^2+7)^2 \end{gathered}\] 
+					So, by the Quotient Rule, 
+					\[y' = \frac{490\,(t^2+7)^3 -
+					490t\,(6t)\,(t^2+7)^2}{(t^2+7)^6}  \]
 					<p>
-						<strong>Goal</strong> Develop a tool to deal with this
+						Now that we have access to all of the derivative rules, we can differentiate <em>any</em> 
+						differentiable function, regardless of how complicated it is. This can get complicated quickly, so:<br>
+
+						<strong>Goal</strong> Develop a tool to mitigate this
 						issue.
 					</p>
 				</section>
 			</section>
 			<section>
-				<h2>Derivative of ln (x)</h2>
+				<h2>Derivative of \(ln (x)\)</h2>
 				<p>
 					Recall \( \left[e^{f(x)}\right]' = e^{f(x)} \cdot f'(x) \).
-					We can use this to find \( \frac{d}{dx}(\ln x) \)
+					We can use this to find \( \frac{d}{dx}(\ln x) \). We note that taking the derivative of 
+					both sides of an equation keeps in equality in tact. 
 				</p>
-				\[ \begin{gathered} f(x) = \ln x \\[0.5em] e^{f(x)} = e^{\ln x}
-				\\[0.5em] e^{f(x)} = x \\[0.5em]
-				\frac{d}{dx}\left(e^{f(x)}\right) = \frac{d}{dx}(x) \\[0.5em]
-				e^{f(x)} \cdot f'(x) = 1 \\[0.5em] f'(x) = \frac{1}{e^{f(x)}} =
-				\frac{1}{e^{\ln x}} = \frac{1}{x} \end{gathered} \]
+
+				\begin{align*} 
+				f(x) =&~ \ln x \\[0.5em] 
+				e^{f(x)} =&~ e^{\ln x}\\[0.5em] 
+				e^{f(x)} =&~ x \\[0.5em]
+				\frac{d}{dx}\left(e^{f(x)}\right) =&~ \frac{d}{dx}(x) \\[0.5em]
+				e^{f(x)} \cdot f'(x) =&~ 1 \\[0.5em] 
+				f'(x) =&~ \frac{1}{e^{f(x)}}\\[0.5em] 
+				f'(x)=&~\frac{1}{e^{\ln x}} \\[0.5em] 
+				f'(x)=&~ \frac{1}{x}
+				\end{align*}
+				
 				<section>
 					<h3>Theorem</h3>
 					<ol>
@@ -581,6 +598,9 @@
 					\\[0.5em] y' = \frac{1}{x-1}(1) + \frac{1}{x+1}(1) \\[0.5em]
 					= \frac{1}{x-1} + \frac{1}{x+1} \\[0.5em] = \frac{x+1 +
 					x-1}{(x-1)(x+1)} = \frac{2x}{x^2-1} \end{gathered} \]
+					<p>So, in other words, we can use the Log Laws to break our function down into other functions 
+					that are easier to differentiate. Let's see another example.</p>
+					 
 				</section>
 				<section>
 					<h3>Example 3</h3>
@@ -616,61 +636,87 @@
 				\frac{1}{f(x)} \cdot f'(x) = \frac{y'}{y} \]
 				<p>We can use this to our advantage.</p>
 				<section>
-					<h3>Ex 5</h3>
-					<p>Find \( y' \) if \( y = \dfrac{490t}{(t^2+7)^3} \)</p>
-					\[ \begin{gathered} \ln y =
-					\ln\left(\frac{490t}{(t^2+7)^3}\right) = \ln(490t) -
-					\ln\left[(t^2+7)^3\right] \\[0.5em] = \ln 490 + \ln t -
-					\ln\left[(t^2+7)^{3}\right] \\[0.5em] \ln y = \ln 490 + \ln
-					t - 3\ln(t^2+7) \\[0.5em] \frac{y'}{y} = \frac{1}{t} - 3
-					\cdot \frac{1}{t^2+7} \cdot 2t \\[0.5em] \frac{y'}{y} =
-					\frac{1}{t} - \frac{6t}{t^2+7} \\[0.5em] y' =
-					y\left[\frac{1}{t} - \frac{6t}{t^2+7}\right] \end{gathered}
-					\]
-					<p><strong>\( y = \dfrac{490t}{(t^2+7)^3} \)</strong></p>
+					<h3>Example 5</h3>
+					<p>Repeat Example 1 using this new technique. I.e., find \( y' \) if \( y = \dfrac{490t}{(t^2+7)^3} \)</p>
+
+					<p>If we take the natural log of both sides, we can simplify the right hand side using the Log Laws.</p>
+					\begin{align*} 
+					\ln y =&~\ln\left(\frac{490t}{(t^2+7)^3}\right)\\[0.5em]
+					\ln y =&~ \ln(490t) -\ln\left[(t^2+7)^3\right] \\[0.5em]
+					\ln y=&~ \ln 490 + \ln t - \ln\left[(t^2+7)^{3}\right] \\[0.5em]
+					\ln y =&~ \ln 490 + \ln t - 3\ln(t^2+7) 
+					\end{align*}
+
+					Taking the derivative of both sides we get: 
+
+					\begin{align*}  
+					\frac{y'}{y} =&~ \frac{1}{t} - 3\cdot \frac{1}{t^2+7} \cdot 2t \\[0.5em] 
+					\frac{y'}{y} =&~\frac{1}{t} - \frac{6t}{t^2+7} \\[0.5em] 
+					y' =&~ y\left[\frac{1}{t} - \frac{6t}{t^2+7}\right]
+					\end{align*}
+					
+					To complete the problem, we want \(y'\) to be solely a function of \(t\). I.e., replace \(y\) 
+					with \(\displaystyle \dfrac{490t}{(t^2+7)^3}\):
+					
 					\[ y' = \frac{490t}{(t^2+7)^3}\left[\frac{1}{t} -
 					\frac{6t}{t^2+7}\right] \]
 				</section>
 				<section>
 					<h3>Example 6</h3>
 					<p>Find \( y' \) if \( y = (2x+1)^5(x^4-3)^6 \)</p>
-					\[ \begin{gathered} \ln y =
-					\ln\left[(2x+1)^5(x^4-3)^6\right] \\[0.5em] \ln y =
-					\ln\left[(2x+1)^{5}\right] + \ln\left[(x^4-3)^{6}\right]
-					\end{gathered} \]
-					<p><strong>\( \ln(a^b) = b\ln a \)</strong></p>
-					\[ \begin{gathered} \ln y = 5\ln(2x+1) + 6\ln(x^4-3)
-					\\[0.5em] \frac{y'}{y} = 5 \cdot \frac{1}{2x+1} \cdot 2 + 6
-					\cdot \frac{1}{x^4-3} \cdot 4x^3 \\[0.5em] \frac{y'}{y} =
-					\frac{10}{2x+1} + \frac{24x^3}{x^4-3} \\[0.5em] y' =
-					y\left[\frac{10}{2x+1} + \frac{24x^3}{x^4-3}\right]
-					\\[0.5em] y' = (2x+1)^5(x^4-3)^6\left[\frac{10}{2x+1} +
-					\frac{24x^3}{x^4-3}\right] \end{gathered} \]
+					\begin{align*} 
+					\ln y =&~	\ln\left[(2x+1)^5(x^4-3)^6\right] \\[0.5em] 
+					\ln y =&~ \ln\left[(2x+1)^{5}\right] + \ln\left[(x^4-3)^{6}\right]\\[0.5em] 
+					\ln y =&~ 5\ln(2x+1) + 6\ln(x^4-3)
+					\end{align*} 
+					Taking the derivative of both sides we obtain:
+					\begin{align*} 
+					\frac{y'}{y} =&~ 5 \cdot \frac{1}{2x+1} \cdot 2 + 6\cdot \frac{1}{x^4-3} \cdot 4x^3 \\[0.5em] 
+					\frac{y'}{y} =&~ \frac{10}{2x+1} + \frac{24x^3}{x^4-3} \\[0.5em] 
+					y' =&~ y\left[\frac{10}{2x+1} + \frac{24x^3}{x^4-3}\right]\\[0.5em] 
+					y' =&~ (2x+1)^5(x^4-3)^6\left[\frac{10}{2x+1} +\frac{24x^3}{x^4-3}\right]
+					\end{align*}
+
+			
 				</section>
 				<section>
 					<h3>Example 7</h3>
 					<p>Find \( y' \) if \( y = x^x \)</p>
-					\[ \begin{gathered} \ln y = \ln\left(x^{x}\right) = x \ln x
-					\\[0.5em] \ln y = x \ln x \\[0.5em] \frac{y'}{y} = 1 \cdot
-					\ln x + x \cdot \frac{1}{x} \\[0.5em] \frac{y'}{y} = \ln x +
-					1 \\[0.5em] y' = y\left[\ln x + 1\right] \\[0.5em] y' =
-					x^x\left[\ln x + 1\right] \end{gathered} \]
+					
+					\begin{align*} 
+					\ln y =&~ \ln\left(x^{x}\right)\\[0.5em] 
+					\ln y =&~ x \ln x \\[0.5em] 
+					\ln y =&~ x \ln x  
+					\end{align*} 
+					Taking the derivative of both sides we obtain:
+					\begin{align*} 
+					\frac{y'}{y} =&~ 1 \cdot\ln x + x \cdot \frac{1}{x} \\[0.5em] 
+					\frac{y'}{y} =&~ \ln x +1 \\[0.5em] 
+					y' =&~ y\left[\ln x + 1\right] \\[0.5em] 
+					y' =&~	x^x\left[\ln x + 1\right]
+					\end{align*} 
+
 				</section>
 				<section>
 					<h3>Example 8</h3>
 					<p>If \( y = (x^2-8x+2)\sqrt{25-x^2} \), find \( y' \).</p>
-					\[ \begin{gathered} \ln y =
-					\ln\left[(x^2-8x+2)\cdot\sqrt{25-x^2}\right] \\[0.5em] \ln y
-					= \ln\left(x^2-8x+2\right) + \ln\sqrt{25-x^2} \\[0.5em] \ln
-					y = \ln\left(x^2-8x+2\right) +
-					\frac{1}{2}\ln\left(25-x^2\right) \\[0.5em] \frac{y'}{y} =
-					\frac{1}{x^2-8x+2}(2x-8) +
-					\frac{1}{2}\cdot\frac{1}{25-x^2}(-2x) \\[0.5em] \frac{y'}{y}
-					= \frac{2x-8}{x^2-8x+2} - \frac{x}{25-x^2} \\[0.5em] y' =
-					y\left[\frac{2x-8}{x^2-8x+2} - \frac{x}{25-x^2}\right]
-					\\[0.5em] y' =
-					(x^2-8x+2)\sqrt{25-x^2}\left[\frac{2x-8}{x^2-8x+2} -
-					\frac{x}{25-x^2}\right] \end{gathered} \]
+
+					\begin{align*} 
+					\ln y =&~	\ln\left[(x^2-8x+2)\cdot\sqrt{25-x^2}\right] \\[0.5em] 
+					\ln y =&~ \ln\left(x^2-8x+2\right) + \ln\sqrt{25-x^2} \\[0.5em] 
+					\ln	y =&~ \ln\left(x^2-8x+2\right) +
+					\frac{1}{2}\ln\left(25-x^2\right)
+					\end{align*} 
+					Taking the derivative of both sides we obtain:
+					\begin{align*} 
+					\frac{y'}{y} =&~\frac{1}{x^2-8x+2}(2x-8) +
+					\frac{1}{2}\cdot\frac{1}{25-x^2}(-2x) \\[0.5em] 
+					\frac{y'}{y}=&~ \frac{2x-8}{x^2-8x+2} - \frac{x}{25-x^2} \\[0.5em] 
+					y' =&~ y\left[\frac{2x-8}{x^2-8x+2} - \frac{x}{25-x^2}\right]
+					\\[0.5em] 
+					y' =&~ (x^2-8x+2)\sqrt{25-x^2}\left[\frac{2x-8}{x^2-8x+2} -
+					\frac{x}{25-x^2}\right]
+					\end{align*}
 				</section>
 				<section>
 					<h3>Example 9</h3>
@@ -678,31 +724,42 @@
 						Find \( y' \) if \( y =
 						\dfrac{(x-2)^5\sqrt{x^2+1}}{(x+3)^7} \)
 					</p>
-					\[ \begin{gathered} \ln y =
-					\ln\left[(x-2)^5\cdot\sqrt{x^2+1}\right] -
-					\ln\left[(x+3)^7\right] \\[0.5em] \ln y =
-					\ln\left(x+2\right)^5 + \ln\left(\sqrt{x^2+1}\right) -
-					\ln\left[(x+3)^7\right] \\[0.5em] \ln y = 5\ln(x+2) +
-					\frac{1}{2}\ln\left(x^2+1\right) - 7\ln(x+3) \\[0.5em]
-					\frac{y'}{y} = 5\cdot\frac{1}{x+2} +
+
+					\begin{align*} 
+					\ln y =&~\ln\left[(x-2)^5\cdot\sqrt{x^2+1}\right] -
+					\ln\left[(x+3)^7\right] \\[0.5em] 
+					\ln y =&~ \ln\left(x+2\right)^5 + \ln\left(\sqrt{x^2+1}\right) -
+					\ln\left[(x+3)^7\right] \\[0.5em] 
+					\ln y =&~ 5\ln(x+2) +
+					\frac{1}{2}\ln\left(x^2+1\right) - 7\ln(x+3)
+					\end{align*} 
+					Taking the derivative of both sides we obtain:
+					\begin{align*} 
+					\frac{y'}{y} =&~ 5\cdot\frac{1}{x+2} +
 					\frac{1}{2}\cdot\frac{1}{x^2+1}\cdot 2x -
-					7\cdot\frac{1}{x+3} \\[0.5em] y' = y\left[\frac{5}{x+2} +
-					\frac{x}{x^2+1} - \frac{7}{x+3}\right] \\[0.5em] y' =
-					\frac{(x-2)^5\sqrt{x^2+1}}{(x+3)^7}\left[\frac{5}{x+2} +
-					\frac{x}{x^2+1} - \frac{7}{x+3}\right] \end{gathered} \]
+					7\cdot\frac{1}{x+3} \\[0.5em] 
+					y' =&~ y\left[\frac{5}{x+2} +
+					\frac{x}{x^2+1} - \frac{7}{x+3}\right] \\[0.5em] 
+					y' =&~ \frac{(x-2)^5\sqrt{x^2+1}}{(x+3)^7}\left[\frac{5}{x+2} +
+					\frac{x}{x^2+1} - \frac{7}{x+3}\right]
+					\end{align*} 
 				</section>
 			</section>
 			<section>
-				<h2>Derivative of \( x^P \)</h2>
-				<p>If \( P \) is rational</p>
+				<h2>Derivative of \( x^p \)</h2>
+				<p>If \( p\) is rational, then we saw the Power Rule holds in Lecture 10.</p>
 				<p>
-					If \( P \) is irrational, then \( x^P \) is only defined for
-					\( x > 0 \)
+					If \( p \) is irrational (e.g., \(\sqrt{2}, \pi, e\)), then \( x^p \) is only defined for
+					\( x > 0 \). With this in mind, 
 				</p>
-				\[ \begin{gathered} \left[x^P\right]' =
-				\left[e^{\ln\left(x^{P}\right)}\right]' = \left[e^{P\ln
-				x}\right]' \\[0.5em] = e^{P\ln x}\cdot P\cdot\frac{1}{x} =
-				x^P\cdot P\cdot\frac{1}{x} = P x^{P-1} \end{gathered} \]
+				\begin{align*} 
+				\left[x^p\right]' =&~\left[e^{\ln\left(x^{p}\right)}\right]' \\[0.5em]
+				=&~ \left[e^{p\ln x}\right]' \\[0.5em] 
+				=&~ e^{p\ln x}\cdot p\cdot\frac{1}{x}\\[0.5em] 
+				=&~x^p\cdot p\cdot\frac{1}{x} \\[0.5em] 
+				=&~ p x^{p-1} 
+				\end{align*} 
+				
 			</section>
 		</article>
 	</body>
