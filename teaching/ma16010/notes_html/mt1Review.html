@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Calculus Problems: Limits, Continuity, and Derivatives</title>
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [['\\(', '\\)']],
+					displayMath: [['\\[', '\\]']],
+					processEscapes: true
+				},
+				options: {
+					skipHtmlTags: [
+						'script',
+						'noscript',
+						'style',
+						'textarea',
+						'code',
+						'pre'
+					]
+				}
+			}
+		</script>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+		<script>
+			window.D2L = { mathJaxLoaded: true }
+		</script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+			:root {
+				--purple: #581c87;
+				--purple-50: #faf5ff;
+				--purple-100: #f3e8ff;
+				--indigo-600: #4f46e5;
+				--indigo-50: #eef2ff;
+				--slate-900: #1e293b;
+				--slate-700: #334155;
+				--slate-400: #595959;
+				--slate-300: #cbd5e1;
+				--slate-200: #e2e8f0;
+				--slate-50: #f8fafc;
+				--rose-500: #f43f5e;
+				--rose-700: #be123c;
+				--rose-50: #fff1f2;
+				--emerald-600: #059669;
+				--emerald-700: #047857;
+				--emerald-50: #ecfdf5;
+				--amber-600: #d97706;
+				--amber-700: #b45309;
+				--amber-50: #fffbeb;
+				--fg-1: var(--slate-900);
+				--fg-2: var(--slate-700);
+				--fg-3: var(--slate-400);
+				--border: var(--slate-200);
+				--rule: var(--slate-300);
+				--accent: var(--purple);
+				--bg: #ffffff;
+				--bg-soft: var(--slate-50);
+				--font-display:
+					'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI',
+					sans-serif;
+				--font-body:
+					'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+					Roboto, sans-serif;
+				--font-mono:
+					ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas,
+					monospace;
+				--measure: 68ch;
+			}
+			#main * {
+				box-sizing: border-box;
+			}
+			html {
+				-webkit-text-size-adjust: 100%;
+			}
+			body {
+				margin: 0;
+				background: var(--bg);
+				color: var(--fg-1);
+				font-family: var(--font-body);
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				text-rendering: optimizeLegibility;
+				-webkit-font-smoothing: antialiased;
+			}
+			#main {
+				max-width: 920px;
+				margin: 0 auto;
+				padding: 4rem 3.5rem 6rem;
+			}
+			@media (max-width: 640px) {
+				#main {
+					padding: 2rem 1.25rem 4rem;
+				}
+				body {
+					font-size: 1rem;
+				}
+			}
+			#main > * + * {
+				margin-top: 1.1em;
+			}
+			a:focus-visible {
+				outline: 3px solid var(--accent);
+				outline-offset: 2px;
+				border-radius: 2px;
+			}
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-family: var(--font-display);
+				margin: 2.2em 0 0.4em;
+				font-weight: 700;
+				line-height: 1.25;
+				letter-spacing: -0.01em;
+			}
+			h2 {
+				font-size: 2.25rem;
+				margin-top: 1.6em;
+				letter-spacing: -0.014em;
+			}
+			h3 {
+				font-size: 1.75rem;
+				letter-spacing: -0.012em;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid var(--border);
+			}
+			h4 {
+				font-size: 1.375rem;
+			}
+			h5 {
+				font-size: 1.125rem;
+				color: var(--fg-2);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+			h6 {
+				font-size: 1rem;
+			}
+			p {
+				margin: 0 0 1.1em;
+			}
+			strong {
+				font-weight: 700;
+			}
+			em {
+				font-style: italic;
+			}
+			small {
+				font-size: 0.85em;
+				color: var(--fg-2);
+			}
+			del {
+				color: var(--fg-3);
+			}
+			ins {
+				background: var(--emerald-50);
+				text-decoration: none;
+				padding: 0 0.125rem;
+				border-radius: 2px;
+			}
+			mark {
+				background: #fef9c3;
+				color: var(--slate-900);
+				padding: 0 0.1875rem;
+				border-radius: 2px;
+			}
+			sub,
+			sup {
+				font-size: 0.75em;
+			}
+			abbr[title] {
+				border-bottom: 1px dotted var(--fg-3);
+				cursor: help;
+			}
+			a {
+				color: var(--accent);
+				text-decoration: underline;
+				text-decoration-color: var(--purple-100);
+				text-underline-offset: 3px;
+				text-decoration-thickness: 1.5px;
+				transition: text-decoration-color 120ms;
+			}
+			a:hover {
+				text-decoration-color: var(--accent);
+			}
+			ul,
+			ol {
+				padding-left: 1.6em;
+			}
+			li {
+				margin: 0.35em 0;
+			}
+			ul ul,
+			ol ol,
+			ul ol,
+			ol ul {
+				margin-top: 0.35em;
+				margin-bottom: 0.35em;
+			}
+			dl {
+				display: grid;
+				grid-template-columns: max-content 1fr;
+				column-gap: 24px;
+				row-gap: 8px;
+			}
+			dt {
+				font-family: var(--font-display);
+				font-weight: 700;
+			}
+			dd {
+				margin: 0;
+				color: var(--fg-2);
+			}
+			blockquote {
+				margin: 1.6em 0;
+				padding: 0.875rem 1.375rem;
+				border-left: 4px solid var(--accent);
+				background: var(--purple-50);
+				border-radius: 0 12px 12px 0;
+				font-style: italic;
+			}
+			blockquote > :last-child {
+				margin-bottom: 0;
+			}
+			blockquote cite {
+				display: block;
+				margin-top: 0.5rem;
+				font-style: normal;
+				font-size: 0.85em;
+				color: var(--fg-2);
+			}
+			blockquote cite::before {
+				content: '— ';
+				color: var(--fg-3);
+			}
+			code {
+				font-family: var(--font-mono);
+				font-size: 0.88em;
+				background: var(--bg-soft);
+				color: var(--slate-900);
+				padding: 0.125rem 0.375rem;
+				border-radius: 6px;
+				border: 1px solid var(--border);
+			}
+			pre {
+				font-family: var(--font-mono);
+				font-size: 0.875rem;
+				line-height: 1.55;
+				background: var(--slate-900);
+				color: #e2e8f0;
+				padding: 1.125rem 1.375rem;
+				border-radius: 12px;
+				overflow-x: auto;
+				margin: 1.6em 0;
+			}
+			pre code {
+				background: transparent;
+				border: 0;
+				padding: 0;
+				font-size: inherit;
+				color: inherit;
+				border-radius: 0;
+			}
+			kbd {
+				font-family: var(--font-mono);
+				font-size: 0.82em;
+				padding: 0.125rem 0.4375rem;
+				background: #fff;
+				border: 1px solid var(--rule);
+				border-bottom-width: 2px;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 var(--rule);
+			}
+			mjx-container[jax][display='true'] {
+				display: block;
+				margin: 1.6em auto;
+				padding: 1.5rem 1.75rem;
+				background: var(--bg-soft);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				text-align: center;
+				font-family: var(--font-math);
+				font-size: 1.375rem;
+				overflow-x: auto;
+				position: relative;
+			}
+			figure,
+			figcaption details summary {
+				text-align: center;
+			}
+			figure {
+				margin: 2em 0;
+				padding: 0;
+			}
+			figure img,
+			figure svg,
+			figure video {
+				max-width: 100%;
+				height: auto;
+				border-radius: 10px;
+				background: var(--bg-soft);
+				border: 1px solid var(--border);
+			}
+			figcaption {
+				margin-top: 0.75rem;
+				font-size: 0.875rem;
+				color: var(--fg-2);
+				font-style: italic;
+				max-width: var(--measure);
+				margin-left: auto;
+				margin-right: auto;
+			}
+			figcaption details {
+				text-align: left;
+			}
+			figcaption strong {
+				font-style: normal;
+				color: var(--fg-1);
+			}
+			.table-wrap {
+				overflow-x: auto;
+				margin: 1.6em 0;
+			}
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				font-size: 0.9375rem;
+			}
+			thead th {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.75rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--fg-2);
+				text-align: left;
+				padding: 0.625rem 0.875rem;
+				border-bottom: 2px solid var(--rule);
+			}
+			tbody td {
+				padding: 0.625rem 0.875rem;
+				border-bottom: 1px solid var(--border);
+			}
+			tbody tr:hover td {
+				background: var(--bg-soft);
+			}
+			tfoot td {
+				padding: 0.625rem 0.875rem;
+				font-family: var(--font-display);
+				font-weight: 700;
+				border-top: 2px solid var(--rule);
+			}
+			.callout {
+				display: grid;
+				grid-template-columns: 28px 1fr;
+				gap: 14px;
+				padding: 1rem 1.125rem;
+				border-radius: 12px;
+				border-left: 4px solid;
+				margin: 1.6em 0;
+				align-items: start;
+			}
+			.callout > svg,
+			.conversion-error-title > svg {
+				width: 22px;
+				height: 22px;
+				margin-top: 0.125rem;
+				flex: 0 0 auto;
+			}
+			.callout > div > :first-child {
+				margin-top: 0;
+			}
+			.callout > div > :last-child {
+				margin-bottom: 0;
+			}
+			.callout p,
+			.conversion-error p {
+				font-size: 0.9375rem;
+			}
+			.callout-title,
+			.conversion-error-title {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.875rem;
+				letter-spacing: 0.02em;
+				margin: 0 0 0.25rem;
+			}
+			.callout.note {
+				background: var(--indigo-50);
+				border-color: var(--indigo-600);
+			}
+			.callout.tip {
+				background: var(--emerald-50);
+				border-color: var(--emerald-600);
+			}
+			.callout.warn {
+				background: var(--amber-50);
+				border-color: var(--amber-600);
+			}
+			.callout.danger {
+				background: var(--rose-50);
+				border-color: var(--rose-500);
+			}
+			.callout.note .callout-title {
+				color: var(--indigo-600);
+			}
+			.callout.tip .callout-title {
+				color: var(--emerald-700);
+			}
+			.callout.warn .callout-title {
+				color: var(--amber-700);
+			}
+			.callout.danger .callout-title {
+				color: var(--rose-700);
+			}
+			.callout.note > svg {
+				color: var(--indigo-600);
+			}
+			.callout.tip > svg {
+				color: var(--emerald-700);
+			}
+			.callout.warn > svg {
+				color: var(--amber-700);
+			}
+			.callout.danger > svg {
+				color: var(--rose-700);
+			}
+			.conversion-error {
+				background: var(--rose-50);
+				border: 2px solid var(--rose-700);
+				border-radius: 12px;
+			}
+			.conversion-error-title {
+				background: var(--rose-700);
+				color: #fff;
+				padding: 0 1.125rem 0.5rem 1.125rem;
+				display: flex;
+				border-radius: 10px 10px 0 0;
+			}
+			.conversion-error-title > svg {
+				margin: 0.5rem 1.35rem 0 0;
+			}
+			.conversion-error .conversion-error-title > p {
+				margin: 0.5rem 0 0 0;
+				padding: 0;
+			}
+			.conversion-error p {
+				padding: 0.5rem 1.125rem 0rem 1.125rem;
+			}
+			hr {
+				border: 0;
+				height: 1px;
+				background: var(--border);
+				margin: 2.2em 0;
+			}
+			.footnote-ref a {
+				font-size: 0.75em;
+				vertical-align: super;
+				padding: 0 0.25rem;
+				text-decoration: none;
+				color: var(--accent);
+				font-weight: 700;
+			}
+			.footnotes {
+				margin-top: 3em;
+				padding-top: 1.6em;
+				border-top: 1px solid var(--border);
+				font-size: 0.875rem;
+				color: var(--fg-2);
+			}
+			.footnotes ol {
+				padding-left: 1.4em;
+			}
+			.footnotes li {
+				margin: 0.5em 0;
+			}
+			.footnotes a.back {
+				margin-left: 0.375rem;
+				text-decoration: none;
+			}
+			@media print {
+				body {
+					font-size: 0.916667rem;
+					color: #000;
+					background: #fff;
+				}
+				#main {
+					max-width: none;
+					padding: 0;
+				}
+				h2 {
+					break-after: avoid;
+				}
+				figure,
+				pre,
+				.math-display,
+				table {
+					break-inside: avoid;
+				}
+				a {
+					color: #000;
+					text-decoration: underline;
+				}
+				a[href]::after {
+					content: ' (' attr(href) ')';
+					font-size: 0.85em;
+					color: #555;
+				}
+				.callout {
+					border-left-width: 3px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<article id="main">
+			<ol class="exam-questions" start="1">
+				<li>
+					<p>
+						<strong>Problem 1.</strong
+						><em>Use the table below to compute numerically</em> \(
+						\lim_{x \to 0} \frac{e^{3x} - 1}{x} \):
+					</p>
+					<table>
+						<caption>
+							Values of \( f(x) \) near \( x = 0 \)
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col">\( x \)</th>
+								<th scope="col">-0.1</th>
+								<th scope="col">-0.01</th>
+								<th scope="col">-0.001</th>
+								<th scope="col">0</th>
+								<th scope="col">0.001</th>
+								<th scope="col">0.01</th>
+								<th scope="col">0.1</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">\( f(x) \)</th>
+								<td>2.5918</td>
+								<td>2.9534</td>
+								<td>2.9955</td>
+								<td>—</td>
+								<td>3.0045</td>
+								<td>3.0455</td>
+								<td>3.4986</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>
+						For \( f(x) = \frac{e^{3x} - 1}{x} \), we compute \(
+						f(-0.001) \) by pushing the following buttons on the
+						calculator in this order:
+					</p>
+					<ol>
+						<li>0.001</li>
+						<li>+/-</li>
+						<li>X 3 =</li>
+						<li>2ND LN</li>
+						<li>&minus; 1</li>
+						<li>=</li>
+						<li>÷ 0.001</li>
+						<li>+/-</li>
+						<li>=</li>
+					</ol>
+					<p>
+						Repeating this for all values in the table, we see \(
+						f(x) \to 3 \) as \( x \to 0 \).
+					</p>
+					<p>So,</p>
+					\[ \lim_{x \to 0} \frac{e^{3x} - 1}{x} = 3 \]
+				</li>
+				<li>
+					<p><strong>Problem 2.</strong><em>Evaluate:</em></p>
+					\[ \lim_{x \to 0} \frac{\sin(x) - x}{4x} \]
+					<p>
+						We use algebra to rewrite this in a way we can compute
+						the limit
+					</p>
+					\[ \begin{aligned} \lim_{x \to 0} \frac{\sin(x) - x}{4x} &=
+					\frac{1}{4} \lim_{x \to 0} \frac{\sin(x) - x}{x} \\ &=
+					\frac{1}{4} \lim_{x \to 0} \left( \frac{\sin x}{x} -
+					\frac{x}{x} \right) \\ &= \frac{1}{4} \lim_{x \to 0} \left(
+					\frac{\sin x}{x} - 1 \right) \\ &= \frac{1}{4} (1 - 1) \\ &=
+					\frac{1}{4} \cdot 0 \\ &= 0 \end{aligned} \]
+				</li>
+			</ol>
+			<ol class="exam-questions" start="3">
+				<li>
+					<p>
+						<strong>Problem 3.</strong
+						><em
+							>Locate and classify all discontinuities of the
+							function \( f(x) \) below:</em
+						>
+					</p>
+					\[ f(x) = \begin{cases} -1 & x < -1 \\ \frac{x^2 + x}{2x} &
+					-1 \le x \le 1 \\ -\cos(\pi x) & x > 1 \end{cases} \]
+					<p>
+						We start by checking for discontinuitres everywhere
+						except \( x = -1 \) and \( x = 1 \).
+					</p>
+					<ol>
+						<li>
+							<p>
+								\( -1 \) is continuous, so \( f \) is continuous
+								on \( (-\infty, -1) \)
+							</p>
+						</li>
+						<li>
+							<p>
+								\( \frac{x^2 + x}{2x} = \frac{x(x+1)}{x \cdot 2}
+								\) is continuous everywhere except \( 0 \).
+								Moreover, the limit as \( x \to 0 \) exists:
+							</p>
+							\[ \lim_{x \to 0} \frac{x(x+1)}{x\,2} = \lim_{x \to
+							0} \frac{(x+1)}{2} = \frac{1}{2} \]
+							<p>
+								Therefore, \( f \) is continuous on \( (-1,0)
+								\cup (0,1) \) and has a
+								<strong>hole at \( x = 0 \)</strong>.
+							</p>
+						</li>
+						<li>
+							<p>
+								\( -\cos(\pi x) \) is continuous, so \( f \) is
+								continuous on \( (1, \infty) \).
+							</p>
+						</li>
+					</ol>
+					<p>We now check for continuity at \( x = -1 \):</p>
+					\[ \begin{aligned} \lim_{x \to -1^-} f(x) &= \lim_{x \to
+					-1^-} -1 = -1 \\ \lim_{x \to -1^+} f(x) &= \lim_{x \to -1^+}
+					\frac{x^2 + x}{2x} = \frac{(-1)^2 + (-1)}{2(-1)} =
+					\frac{0}{-2} = 0 \\ f(-1) &= 0 \end{aligned} \]
+					<p>
+						So, the left and right limits are unequal implying \( f
+						\) has a
+						<strong>jump discontinuity at \( x = -1 \)</strong>.
+					</p>
+				</li>
+			</ol>
+			<p>We now check for continuity at \( x = 1 \):</p>
+			\[ \begin{aligned} \lim_{x \to 1^-} f(x) &= \lim_{x \to 1^-}
+			\frac{x^2 + x}{2x} = \frac{(1)^2 + 1}{2(1)} = 1 \\ \lim_{x \to 1^+}
+			f(x) &= \lim_{x \to 1^+} -\cos(\pi x) = -\cos(\pi) = -(-1) = 1 \\
+			f(1) &= 1 \end{aligned} \]
+			<p>Therefore, \( f \) is continuous at \( x = 1 \).</p>
+			<ol class="exam-questions" start="4">
+				<li>
+					<p>
+						<strong>Problem 4.</strong
+						><em
+							>Use the definition of the derivative to compute \(
+							f'(x) \) if \( f(x) = x^2 - x \).</em
+						>
+					</p>
+					<p>By definition,</p>
+					\[ \begin{aligned} f'(x) &= \lim_{h \to 0} \frac{f(x+h) -
+					f(x)}{h} \\ &= \lim_{h \to 0} \frac{(x+h)^2 - (x+h) - x^2 +
+					x}{h} \\ &= \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x - h -
+					x^2 - x}{h} \\ &= \lim_{h \to 0} \frac{2xh + h^2 - h}{h} \\
+					&= \lim_{h \to 0} (2x + h - 1) \\ &= 2x - 1 \end{aligned} \]
+				</li>
+			</ol>
+			<ol class="exam-questions" start="5">
+				<li>
+					<p>
+						<strong>Problem 5.</strong
+						><em
+							>Find the equation of the line tangent to \( f(x) =
+							\sqrt{x} \) at \( x = 4 \)</em
+						>
+					</p>
+					<p>To find the slope, we need to compute \( f'(4) \):</p>
+					\[ \begin{aligned} f'(x) &= \left[ x^{\frac{1}{2}} \right]'
+					\\ &= \frac{1}{2} x^{-\frac{1}{2}} \\ &= \frac{1}{2\sqrt{x}}
+					\\ f'(4) &= \frac{1}{2\sqrt{4}} \\ &= \frac{1}{4}
+					\end{aligned} \]
+					<p>
+						To find the point the tangent line touches the graph, we
+						need to compute \( f(4) \)
+					</p>
+					\[ \begin{aligned} f(x) &= \sqrt{x} \\ f(4) &= \sqrt{4} = 2
+					\end{aligned} \]
+					<p>So, the point is \( (4, f(4)) \), i.e., \( (4,2) \).</p>
+					<p>Now, by the equation for the tangent line is:</p>
+					\[ \begin{aligned} y - f(4) &= f'(4)(x-4) \\ y - 2 &=
+					\frac{1}{4}(x-4) \\ y - 2 &= \frac{1}{4}x - 1 \\ y &=
+					\frac{1}{4}x + 1 \end{aligned} \]
+				</li>
+			</ol>
+			<ol class="exam-questions" start="6">
+				<li>
+					<p>
+						<strong>Problem 6.</strong
+						><em>Differentiate the following functions:</em>
+					</p>
+					<ol type="i">
+						<li>
+							<p>
+								\( f(x) = 3x^4 + 7\sqrt[4]{x^3} -
+								5x^{-\frac{2}{5}} + 9x + 1 \)
+							</p>
+							\[ \begin{aligned} f(x) &= 3x^4 + 7x^{\frac{3}{4}} -
+							5x^{-\frac{2}{5}} + 9x + 1 \\ f'(x) &= 3\cdot 4x^3 +
+							7\cdot\frac{3}{4}x^{-\frac{1}{4}} -
+							5\left(-\frac{2}{5}\right)x^{-\frac{7}{5}} + 9\cdot
+							1 \\ f'(x) &= 12x^3 + \frac{21}{4}x^{-\frac{1}{4}} +
+							2x^{-\frac{7}{5}} + 9 \end{aligned} \]
+							<p>
+								where we used \( [x^p] = px^{p-1} \), \( [f+g]'
+								= f' + g' \), and \( [kf]' = k\cdot f' \)
+							</p>
+						</li>
+						<li>
+							<p>\( g(x) = e^x \csc(x) \)</p>
+							<p>
+								We need the product rule \( [fg]' = f'g + fg' \)
+							</p>
+							\[ \begin{aligned} g'(x) &= [e^x]'\csc x + e^x[\csc
+							x] \\ &= e^x \csc x + e^x(-\csc x \cot x) \\ &= e^x
+							\csc x (1 - \cot x) \end{aligned} \]
+						</li>
+						<li>
+							<p>\( h(x) = \frac{\sec(x)}{\sin(x)} \)</p>
+							<p>
+								Here we need the quotient rule \(
+								\left[\frac{f}{g}\right]' = \frac{f'g -
+								fg'}{g^2} \)
+							</p>
+							\[ \begin{gathered} h'(x) = \frac{[\sec x]'\sin x -
+							\sec x[\sin x]'}{\sin^2 x} \\[0.5em] h'(x) =
+							\frac{\sec x \tan x \sin x - \sec x \cos x}{\sin^2
+							x} = \sec^2 x - \csc^2 x \end{gathered} \]
+						</li>
+						<li>
+							<p>\( s(x) = \tan(x^2 + 3x) \)</p>
+							<p>
+								Here we need the chain rule \( [f \circ g]' =
+								f'(g(x))\cdot g'(x) \)
+							</p>
+							\[ \begin{aligned} s'(x) &= \sec^2(x^2 +
+							3x)\left[x^2 + 3x\right]' \\ &= \sec^2(x^2 +
+							3x)\cdot(2x + 3) \\ &= (2x+3)\sec^2(x^2 + 3x)
+							\end{aligned} \]
+						</li>
+					</ol>
+				</li>
+			</ol>
+			<ol class="exam-questions" start="7">
+				<li>
+					<p>
+						<strong>Problem 7.</strong
+						><em
+							>The position of a dampened pendulum is measured
+							from the angle (in radians) from its resting point.
+							Its position after t seconds is given by the
+							equation:</em
+						>
+					</p>
+					\[ s(t) = e^{-t}\cos\left(\frac{\pi}{2}t\right) \]
+					<ol type="i">
+						<li>
+							<p>
+								<em
+									>What is the velocity function \( v(t) \)
+									(in radians per second)?</em
+								>
+							</p>
+							<p>
+								Recall that the velocity is the derivative of
+								the position function:
+							</p>
+							\[ \begin{aligned} v(t) = s'(t) &=
+							\left[e^{-t}\right]'\cos\left(\frac{\pi}{2}t\right)
+							+
+							e^{-t}\left[\cos\left(\frac{\pi}{2}t\right)\right]'
+							\\ &= -e^{-t}\cos\left(\frac{\pi}{2}t\right) +
+							e^{-t}\left[-\frac{\pi}{2}\sin\left(\frac{\pi}{2}t\right)\right]
+							\\ &= -e^{-t}\left[\cos\left(\frac{\pi}{2}t\right) +
+							\frac{\pi}{2}\sin\left(\frac{\pi}{2}t\right)\right]\frac{\text{rad}}{\text{s}}
+							\end{aligned} \]
+						</li>
+						<li>
+							<p><em>What is the velocity after 1 second?</em></p>
+							\[ \begin{aligned} v(1) &=
+							-e^{-1}\left[\cos\left(\frac{\pi}{2}\right) +
+							\frac{\pi}{2}\sin\left(\frac{\pi}{2}\right)\right]
+							\\ &= -e^{-1}\left[0 + \frac{\pi}{2}\right] \\ &=
+							-\frac{\pi}{2e} \\ &=
+							\left[-\frac{\pi}{2e}\right]\frac{\text{rad}}{\text{s}}
+							\end{aligned} \]
+						</li>
+					</ol>
+				</li>
+			</ol>
+			<ol class="exam-questions" start="8">
+				<li>
+					<p>
+						<strong>Problem 8.</strong
+						><em
+							>The limit below represents the derivative of some
+							function \( f(x) \) at a point \( a \):</em
+						>
+					</p>
+					\[ \lim_{h \to 0} \frac{\sqrt[3]{\frac{1}{64+h}} -
+					\frac{1}{4}}{h} \]
+					<ol type="i">
+						<li>
+							<p>
+								<em
+									>Find the function \( f(x) \) and the point
+									\( a \).</em
+								>
+							</p>
+							<p>
+								We rewrite the limit in the form \(
+								\lim\limits_{h \to 0} \frac{f(x+h) - f(x)}{h}
+								\):
+							</p>
+							\[ \begin{aligned} \lim_{h \to 0}
+							\frac{\sqrt[3]{\frac{1}{64+h}} - \frac{1}{4}}{h} &=
+							\lim_{h \to 0} \frac{\sqrt[3]{(64+h)^{-1}} -
+							\frac{1}{4}}{h} \\ &= \lim_{h \to 0}
+							\frac{(64+h)^{-\frac{1}{3}} - \frac{1}{64^{1/3}}}{h}
+							\\ &= \lim_{h \to 0} \frac{(64+h)^{-\frac{1}{3}} -
+							(64)^{-\frac{1}{3}}}{h} \end{aligned} \]
+							<p>
+								Thus, \( f(x) = x^{-\frac{1}{3}} \) and \( a =
+								64 \).
+							</p>
+						</li>
+						<li>
+							<p><em>Compute the limit.</em></p>
+							\[ \begin{aligned} \lim_{h \to 0}
+							\frac{\sqrt[3]{\frac{1}{64+h}} - \frac{1}{4}}{h} &=
+							\left. \frac{d}{dx}\left(x^{-\frac{1}{3}}\right)
+							\right|_{x=64} \\ &= \left. -\frac{1}{3}
+							x^{-\frac{4}{3}} \right|_{x=64} \\ &= \left.
+							-\frac{1}{3}\cdot\frac{1}{\left(\sqrt[3]{x}\right)^{4}}
+							\right|_{x=64} \\ &=
+							-\frac{1}{3\left(\sqrt[3]{64}\right)^{4}} \\ &=
+							-\frac{1}{3(\sqrt[3]{64})^{4}} \\ &=
+							-\frac{1}{3\cdot 256} \\ &= -\frac{1}{768}
+							\end{aligned} \]
+						</li>
+					</ol>
+				</li>
+			</ol>
+		</article>
+	</body>
+</html>
