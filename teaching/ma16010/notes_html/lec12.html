@@ -534,14 +534,14 @@
 				</p>
 				<p><strong>Summary:</strong></p>
 				\[ \begin{gathered} \frac{d^n f}{dx^n} =
-				\frac{d}{dx}\left(\frac{d^{n-1} f}{dx^{n-1}}\right) \quad
+				\frac{d}{dx}\left(\frac{d^{n-1} f}{dx^{n-1}}\right) \\[0.5em]
 				f^{(n)}(x) = [f^{(n-1)}(x)]' \\[0.5em] a(t) = v'(t) = s''(t)
-				\quad j(t) = a'(t) = v''(t) = s'''(t) \end{gathered} \]
+				\quad\\[0.5em] j(t) = a'(t) = v''(t) = s'''(t) \end{gathered} \]
 				<p>
 					Recall that the height of a ball tossed straight into the
 					air can be modeled using a parabola. Say
 				</p>
-				\[ S(t) = -4.9t^2 + 7t + 6 \]
+				\[ s(t) = -4.9t^2 + 7t + 6 \]
 				<p>Then the velocity of the ball is given by the derivative.</p>
 				\[ v(t) = s'(t) = -9.8t + 7 \]
 				<p>
@@ -720,7 +720,7 @@
 							</p>
 							<p>
 								<strong>Step 1</strong> Find \( t \) when \(
-								v(t) = -3 \)
+								v(t) = 24 \)
 							</p>
 							\[ \begin{aligned} v(t) = 3t^2 - 12t + 9
 							&\stackrel{\text{set}}{=} 24 \\ 3t^2 - 12t - 15 &= 0
@@ -779,9 +779,10 @@
 						>
 					</p>
 					\[ -2t = 0 \quad \text{OR} \quad t^2+1 = 0 \quad \text{OR}
-					\quad 3-t^2 = 0 \] \[ \boxed{t = 0} \qquad \text{Never}
-					\qquad \begin{aligned} t^2 &= 3 \\ t &= \pm\sqrt{3}
-					\end{aligned} \] \[ \boxed{t = \sqrt{3}} \]
+					\quad 3-t^2 = 0 \] 
+					\[ \boxed{t = 0} \qquad \text{Never}
+					\qquad \begin{aligned} &t^2 = 3 \\ &t = \pm\sqrt{3}\\ &\boxed{t =~ \sqrt{3}}
+					\end{aligned} \] 
 				</section>
 			</section>
 			<section>
@@ -884,7 +885,7 @@
 					3x^2 + 2x + 1 \\ f''(x) &= 6x + 2 \\ f'''(x) &= 6 \\
 					f^{(4)}(x) &= 0 \end{aligned} \]
 					<p>
-						So f (and polynomials in general) go to \( 0 \) if you
+						So \(f\) (and polynomials in general) go to \( 0 \) if you
 						take enough (1 + the degree of the polynomial)
 						derivatives
 					</p>
@@ -966,6 +967,25 @@
 							</details>
 						</figcaption>
 					</figure>
+				</section>
+				<section>
+					<h2>Supplemental Examples from the Homework</h2>
+					<h3>Example 8 (HW 12, #2)</h3>
+					<p>Find \( g''(x) \) if \(g(x) = 4e^{3x}\cos(4x)\)</p>
+
+					\begin{align*} 
+					g(x) = 4e^{3x} \cos(4x) 
+					\end{align*} 
+					\begin{align*} 
+					g'(x) =&~ 4e^{3x}(3) \cos(4x) + 4e^{3x} (-\sin(4x))(4)\\[0.5em] 
+					=&~  12e^{3x} \cos(4x) - 16 e^{3x}\sin(4x)\\[0.5em] 
+					=&~  4e^{3x}[3 \cos(4x) - 4\sin(4x)]
+					\end{align*} 
+					\begin{align*} 
+					g''(x) =&~ 12e^{3x} [3\cos(4x) - 4\sin(4x)] + 4e^{3x}[-12\sin(4x) - 16\cos(4x)]\\[0.5em]
+						=&~ (36 - 64)e^{3x}\cos(4x) + (-48 - 48) e^{3x}\sin(4x)\\[0.5em] 
+						=&~ -28e^{3x} \cos(4x) - 96e^{3x}\sin(4x) 
+					\end{align*} 
 				</section>
 			</section>
 		</article>
