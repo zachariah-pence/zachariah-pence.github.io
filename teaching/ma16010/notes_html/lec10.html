@@ -545,10 +545,23 @@
 					\circ g) =& \frac{df}{dg} \cdot \frac{dg}{dx} \\[0.5em]
 					\text{Format II:}\quad [f(g(x))]' =& f'(g(x)) \cdot g'(x)
 					\end{gathered} \]
-
+					
 					<p>We will show how the Chain Rule is used in both formats. That being said, 
-					put the one that is most advantageous for the problem you are working on. Or at least, 
+					use the one that is most advantageous for the problem you are working on. Or at least, 
 					the one that is easier to understand and memorize.</p> 
+				
+					<p>We give a easy and intuitative "proof" of the Chain Rule:</p>
+					\begin{align*} 
+						\dfrac{d(f \circ g)}{dx} =&~ \lim_{\Delta x \to 0}\dfrac{\Delta f(g(x))}{\Delta x}\\[0.5em] 
+						=&~ \lim_{\Delta x \to 0}\frac{\Delta f(g(x))}{\Delta g(x)}\cdot \frac{\Delta g(x)}{\Delta x}\\[0.5em]
+						=&~ \left[\lim_{\Delta x \to 0} \frac{\Delta f(g(x))}{\Delta g(x)} \right]\cdot \left[\lim_{\Delta x \to 0} \frac{\Delta g(x)}{\Delta x}\right]~(g\text{ is continuous, so }\Delta g \to 0\text{ as }\Delta x \to 0)\\[0.5em] 
+						=&~ \left[\lim_{\Delta g \to 0} \frac{\Delta f(g(x))}{\Delta g(x)} \right]\cdot \left[\lim_{\Delta x \to 0} \frac{\Delta g(x)}{\Delta x}\right]\\[0.5em] 
+						=&~ \dfrac{df}{dg}\cdot\dfrac{dg}{dx}
+					\end{align*} 
+
+					<p><strong>This, unfortunately, is invalid</strong> since it is possible to have \(\Delta g(x) = 0\) even if \(\Delta x \neq 0\) (hence, we are dividing by \(0\)). There is a 
+						way around this, but that is way too technical for our purposes today. We just want to apply the Chain Rule. 
+					</p>
 				</section>
 				<section>
 					<h3>Example 1</h3>
