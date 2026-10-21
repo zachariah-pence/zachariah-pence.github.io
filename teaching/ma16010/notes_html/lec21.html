@@ -521,6 +521,10 @@
 	</head>
 	<body>
 		<article id="main">
+			<p><strong>NOTE:</strong> You may view the original PDFs of the notes written
+				in class by clicking on the link for the <a href="../notes/lec21_130.pdf">1:30 Section</a>
+				or <a href="../notes/lec21_230.pdf">2:30 Section</a>, respectively.
+			</p>
 			<section>
 				<h2>Lecture 21: Limits at Infinity</h2>
 				<p>
@@ -528,12 +532,12 @@
 					(asymptotic behavior) of functions.
 				</p>
 				<p><strong>Definition.</strong> We say:</p>
-				\[ \lim_{x \to \infty} f(x) = L \]
+				\[ \displaystyle\lim_{x \to \infty} f(x) = L \]
 				<p>
 					to mean \( f(x) \) goes to \( L \) as \( x \) "goes to
 					infinity" (i.e., \( x \) gets very, very large). Similarly,
 				</p>
-				\[ \lim_{x \to -\infty} f(x) = L \]
+				\[ \displaystyle\lim_{x \to -\infty} f(x) = L \]
 				<p>
 					means \( f(x) \) goes to \( L \) as \( x \) "goes to
 					negative infinity" (i.e., \( x \) gets very, very "largely
@@ -547,9 +551,9 @@
 				<section>
 					<h3>Example 1.</h3>
 					<p>
-						For each part, determine \( \lim_{x \to \infty} f(x) \)
-						and \( \lim_{x \to -\infty} f(x) \), where the graph of
-						\( f \) is given.
+						For each part, determine \( \displaystyle\lim_{x \to \infty} f(x) \)
+						and \( \displaystyle\lim_{x \to -\infty} f(x) \), where the graph of
+						\( f \) is given: 
 					</p>
 					<figure>
 						<img
@@ -580,7 +584,8 @@
 							</details>
 						</figcaption>
 					</figure>
-					<p>\( \lim_{x \to \infty} f(x) = \) <strong>1</strong></p>
+					<p>\( \displaystyle\lim_{x \to \infty} f(x) = \) 1</p>
+					<p>\( \displaystyle\lim_{x \to -\infty} f(x) = \) 0</p>
 					<figure>
 						<img
 							id="p1_fig_2"
@@ -609,13 +614,13 @@
 						</figcaption>
 					</figure>
 					<p>
-						\( \lim_{x \to \infty} f(x) = \)
-						<strong>\( \infty \)</strong>
+						\( \displaystyle\lim_{x \to \infty} f(x) = \)
+						\( \infty \)
 					</p>
-					<p>\( \lim_{x \to -\infty} f(x) = \) <strong>0</strong></p>
+					
 					<p>
-						\( \lim_{x \to -\infty} f(x) = \)
-						<strong>\( -\infty \)</strong>
+						\( \displaystyle\lim_{x \to -\infty} f(x) = \)
+						\( -\infty \)
 					</p>
 				</section>
 				<section>
@@ -685,7 +690,7 @@
 							</tr>
 						</tbody>
 					</table>
-					\[ \lim_{x \to \infty} \frac{1}{x} = 0 \]
+					\[ \displaystyle\lim_{x \to \infty} \frac{1}{x} = 0 \]
 					<table>
 						<caption>
 							Values of \( f(x) = \frac{1}{x} \) as \( x \) grows
@@ -716,19 +721,19 @@
 							</tr>
 						</tbody>
 					</table>
-					\[ \lim_{x \to -\infty} \frac{1}{x} = 0 \]
+					\[ \displaystyle\lim_{x \to -\infty} \frac{1}{x} = 0 \]
 					<p>In general, for any positive integer \( n \),</p>
-					\[ \lim_{x \to \infty} \frac{1}{x^n} = \lim_{x \to -\infty}
+					\[ \displaystyle\lim_{x \to \infty} \frac{1}{x^n} = \displaystyle\lim_{x \to -\infty}
 					\frac{1}{x^n} = 0 \]
 				</section>
 				<section>
 					<h3>Example 3.</h3>
 					<p>
-						Compute \( \lim_{x \to \infty} \left( 2 + \frac{3}{x^2}
+						Compute \( \displaystyle\lim_{x \to \infty} \left( 2 + \frac{3}{x^2}
 						\right) \)
 					</p>
-					\[ \begin{gathered} \lim_{x \to \infty} \left( 2 +
-					\frac{3}{x^2} \right) = \lim_{x \to \infty} 2 + 3 \lim_{x
+					\[ \begin{gathered} \displaystyle\lim_{x \to \infty} \left( 2 +
+					\frac{3}{x^2} \right) = \displaystyle\lim_{x \to \infty} 2 + 3 \lim_{x
 					\to \infty} \frac{1}{x^2} \\[0.5em] = 2 + 3 \cdot 0
 					\\[0.5em] = 2 \end{gathered} \]
 				</section>
@@ -743,15 +748,15 @@
 					<h3>Example 4.</h3>
 					<p>
 						For \( f(x) = \frac{x^2 - 1}{2x^2 + 1} \), compute \(
-						\lim_{x \to \infty} f(x) \) and \( \lim_{x \to -\infty}
+						\displaystyle\lim_{x \to \infty} f(x) \) and \( \displaystyle\lim_{x \to -\infty}
 						f(x) \).
 					</p>
-					\[ \begin{gathered} \lim_{x \to \infty} f(x) = \lim_{x \to
+					\[ \begin{gathered} \displaystyle\lim_{x \to \infty} f(x) = \lim_{x \to
 					\infty} \frac{x^2\left(\frac{x^2}{x^2} -
 					\frac{1}{x^2}\right)}{x^2\left(\frac{2x^2}{x^2} +
-					\frac{1}{x^2}\right)} = \lim_{x \to \infty} \frac{1 -
+					\frac{1}{x^2}\right)} = \displaystyle\lim_{x \to \infty} \frac{1 -
 					\frac{1}{x^2}}{2 + \frac{1}{x^2}} = \frac{1 - 0}{2 + 0} =
-					\frac{1}{2} \\[0.5em] \lim_{x \to -\infty} f(x) = \lim_{x
+					\frac{1}{2} \\[0.5em] \displaystyle\lim_{x \to -\infty} f(x) = \lim_{x
 					\to -\infty} \frac{1 - \frac{1}{x^2}}{2 + \frac{1}{x^2}} =
 					\frac{1}{2} \end{gathered} \]
 				</section>
@@ -759,18 +764,18 @@
 					<h3>Example 5.</h3>
 					<p>
 						For \( f(x) = \frac{x^2 + 2}{x^3 + x^2 - 1} \), compute
-						\( \lim_{x \to \infty} f(x) \) and \( \lim_{x \to
+						\( \displaystyle\lim_{x \to \infty} f(x) \) and \( \displaystyle\lim_{x \to
 						-\infty} f(x) \).
 					</p>
-					\[ \begin{gathered} \lim_{x \to \infty} \frac{x^2 + 2}{x^3 +
-					x^2 - 1} = \lim_{x \to \infty}
+					\[ \begin{gathered} \displaystyle\lim_{x \to \infty} \frac{x^2 + 2}{x^3 +
+					x^2 - 1} = \displaystyle\lim_{x \to \infty}
 					\frac{x^3\left(\frac{x^2}{x^3} +
 					\frac{2}{x^3}\right)}{x^3\left(\frac{x^3}{x^3} +
 					\frac{x^2}{x^3} - \frac{1}{x^3}\right)} \\[0.5em] = \lim_{x
 					\to \infty} \frac{\frac{1}{x} + \frac{2}{x^3}}{1 +
 					\frac{1}{x} - \frac{1}{x^3}} = \frac{0 + 0}{1 + 0 - 0} = 0
-					\\[0.5em] \lim_{x \to -\infty} \frac{x^2 + 2}{x^3 + x^2 - 1}
-					= \lim_{x \to -\infty} \frac{\frac{1}{x} + \frac{2}{x^3}}{1
+					\\[0.5em] \displaystyle\lim_{x \to -\infty} \frac{x^2 + 2}{x^3 + x^2 - 1}
+					= \displaystyle\lim_{x \to -\infty} \frac{\frac{1}{x} + \frac{2}{x^3}}{1
 					+ \frac{1}{x} - \frac{1}{x^3}} = 0 \end{gathered} \]
 					<p>
 						<strong>Main Strategy (Informally):</strong> Compare the
@@ -781,14 +786,14 @@
 					<h3>Example 6.</h3>
 					<p>
 						For \( f(x) = \frac{x^2 + x}{-x + 3} \), compute \(
-						\lim_{x \to \infty} f(x) \) and \( \lim_{x \to -\infty}
+						\displaystyle\lim_{x \to \infty} f(x) \) and \( \displaystyle\lim_{x \to -\infty}
 						f(x) \).
 					</p>
-					\[ \begin{gathered} \lim_{x \to \infty} \frac{x^2 + x}{-x +
-					3} = \lim_{x \to \infty} \frac{x^2}{-x} = \lim_{x \to
-					\infty} -x = -\infty \\[0.5em] \lim_{x \to -\infty}
-					\frac{x^2 + x}{-x + 3} = \lim_{x \to -\infty} \frac{x^2}{-x}
-					= \lim_{x \to -\infty} (-x) = \infty \end{gathered} \]
+					\[ \begin{gathered} \displaystyle\lim_{x \to \infty} \frac{x^2 + x}{-x +
+					3} = \displaystyle\lim_{x \to \infty} \frac{x^2}{-x} = \lim_{x \to
+					\infty} (-x) = -\infty \\[0.5em] \displaystyle\lim_{x \to -\infty}
+					\frac{x^2 + x}{-x + 3} = \displaystyle\lim_{x \to -\infty} \frac{x^2}{-x}
+					= \displaystyle\lim_{x \to -\infty} (-x) = \infty \end{gathered} \]
 					<p><strong>In Summary:</strong> For a rational function:</p>
 					\[ f(x) = \frac{a(x)}{b(x)} \]
 					<p>
@@ -796,20 +801,20 @@
 						term and leading coefficient of the polynomial \( a(x)
 						\) respectively, then,
 					</p>
-					\[ \begin{gathered} \lim_{x \to \infty} f(x) = \lim_{x \to
+					\[ \begin{gathered} \displaystyle\lim_{x \to \infty} f(x) = \lim_{x \to
 					\infty} \frac{LT(a(x))}{LT(b(x))} \\[0.5em] \lim_{x \to
-					-\infty} f(x) = \lim_{x \to -\infty}
+					-\infty} f(x) = \displaystyle\lim_{x \to -\infty}
 					\frac{LT(a(x))}{LT(b(x))} \end{gathered} \]
 					<p>In particular,</p>
 					<ol>
 						<li>
 							If \( \deg(a(x)) = \deg(b(x)) \), then: \[ \lim_{x
-							\to \infty} f(x) = \lim_{x \to -\infty} f(x) =
+							\to \infty} f(x) = \displaystyle\lim_{x \to -\infty} f(x) =
 							\frac{LC(a(x))}{LC(b(x))} \]
 						</li>
 						<li>
 							If \( \deg(a(x)) < \deg(b(x)) \), then: \[ \lim_{x
-							\to \infty} f(x) = \lim_{x \to -\infty} f(x) = 0 \]
+							\to \infty} f(x) = \displaystyle\lim_{x \to -\infty} f(x) = 0 \]
 						</li>
 						<li>
 							If \( \deg(a(x)) > \deg(b(x)) \), more work is
@@ -826,13 +831,13 @@
 				<p>
 					<strong>Definition.</strong> A function \( f(x) \) has a
 					<strong>vertical asymptote at</strong> \( x = c \) if either
-					\( \lim_{x \to c^-} f(x) \) or \( \lim_{x \to c^+} f(x) \)
+					\( \displaystyle\lim_{x \to c^-} f(x) \) or \( \displaystyle\lim_{x \to c^+} f(x) \)
 					is NOT finite.
 				</p>
 				<p>
 					<strong>Definition.</strong> A function \( f(x) \) has a
 					<strong>horizontal asymptote at</strong> \( y = L \) if
-					either \( \lim_{x \to -\infty} f(x) = L \) or \( \lim_{x \to
+					either \( \displaystyle\lim_{x \to -\infty} f(x) = L \) or \( \displaystyle\lim_{x \to
 					\infty} f(x) = L \).
 				</p>
 				<section>
@@ -844,7 +849,7 @@
 					<p>
 						For a rational function, VAs occur when the denominator
 						is <strong>0</strong>, but the numerator is
-						<strong>non-zero</strong>.
+						<strong>non-zero</strong> (after canceling out any common factors on the top and bottom).
 					</p>
 					\[ \begin{gathered} x^2 - 4 \stackrel{\text{set}}{=} 0
 					\\[0.5em] \Rightarrow \quad x = 2, -2 \end{gathered} \]
@@ -855,7 +860,7 @@
 					</p>
 					<p>
 						For a rational function \( f(x) \), HAs occur when
-						either \( \lim_{x \to -\infty} f(x) \) or \( \lim_{x \to
+						either \( \displaystyle\lim_{x \to -\infty} f(x) \) or \( \lim_{x \to
 						\infty} f(x) \) is <strong>finite</strong>.
 					</p>
 					<div class="callout note">
@@ -871,9 +876,9 @@
 							<p>Rational functions have at most one HA.</p>
 						</div>
 					</div>
-					\[ \lim_{x \to \infty} \frac{3x^2 + 5}{x^2 - 4} = \lim_{x
-					\to \infty} \frac{3x^2}{x^2} = \lim_{x \to \infty} 3 = 3 \]
-					<p>\( \lim_{x \to -\infty} f(x) \) is also \( 3 \)</p>
+					\[ \displaystyle\lim_{x \to \infty} \frac{3x^2 + 5}{x^2 - 4} = \lim_{x
+					\to \infty} \frac{3x^2}{x^2} = \displaystyle\lim_{x \to \infty} 3 = 3 \]
+					<p>\( \displaystyle\lim_{x \to -\infty} f(x) \) is also \( 3 \)</p>
 				</section>
 			</section>
 			<section>
@@ -888,11 +893,11 @@
 				</p>
 				\[ \frac{a(x)}{b(x)} = q(x) + \frac{r(x)}{b(x)} \quad \text{AND}
 				\quad \deg(r(x)) < \deg(b(x)) \]
-				<p>Compare this with number</p>
+				<p>Compare this with numbers:</p>
 				\[ \begin{array}{r} 3 \phantom{)} \\ 2\overline{)\,7\phantom{0}}
 				\\ \underline{-\,6\phantom{0}} \\ 1\phantom{0} \end{array} \]
-				<p>So \( 5 = 3(2) + 1 \), or</p>
-				\[ \frac{5}{2} = 3 + \frac{1}{2} \]
+				<p>So \( 7 = 3(2) + 1 \), or</p>
+				\[ \frac{7}{2} = 3 + \frac{1}{2} \]
 				<section>
 					<h3>Example 8.</h3>
 					<p>
@@ -913,8 +918,8 @@
 						is a <strong>slant (oblique) asymptote</strong> of the
 						graph of \( f(x) \) if:
 					</p>
-					\[ \lim_{x \to \infty} [f(x) - (mx + b)] = 0 \quad \text{OR}
-					\quad \lim_{x \to -\infty} [f(x) - (mx + b)] = 0 \]
+					\[ \displaystyle\lim_{x \to \infty} [f(x) - (mx + b)] = 0 \quad \text{OR}
+					\quad \displaystyle\lim_{x \to -\infty} [f(x) - (mx + b)] = 0 \]
 					<p>
 						<strong>Informally,</strong> this means the graph of \(
 						f(x) \) gets closer and closer to the line \( y = mx + b
@@ -953,13 +958,11 @@
 					<p>
 						So \( f \) has \( y = 2x + 5 \) as a slant asymptote. We
 						can see this in the graph of \( f(x) \); since \(
-						-\frac{6}{x-1} \Rightarrow 0 \) as \( x \to \pm\infty
-						\), \( f(x) \) starts getting
-					</p>
-					<p>
-						closer to the value of \( 2x+5 \) as \( x \to \pm\infty
+						-\frac{6}{x-1} \rightarrow 0 \) as \( x \to \pm\infty
+						\), \( f(x) \) starts getting closer to the value of \( 2x+5 \) as \( x \to \pm\infty
 						\)
 					</p>
+					
 					<figure>
 						<img
 							id="p8_fig_1"
@@ -1009,10 +1012,10 @@
 					\[ f(x) = \frac{2x^3 - 3x + 1}{x^2 - x - 6} \]
 					<p><strong>Vertical Asymptotes:</strong></p>
 					\[ \begin{gathered} x^2 - x - 6 \stackrel{\text{set}}{=} 0
-					\\[0.5em] (x-3)(x+2) = 0 \\[0.5em] x = -2, 3 \end{gathered}
+					\\[0.5em] (x-3)(x+2) = 0 \\[0.5em] \Longrightarrow  x = -2, 3 \end{gathered}
 					\]
 					<p>
-						\( \Longrightarrow \) \( 2x^3 - 3x + 1 \) is not zero at
+						\( \) \( 2x^3 - 3x + 1 \) is not zero at
 						\( x = -2 \) nor at \( x = 3 \), so those are the
 						locations of the VAs.
 					</p>
@@ -1022,8 +1025,8 @@
 						So, (since \( f \) is rational) \( f \) can not have a
 						HA.
 					</p>
-					<p>Slant Asymptotes:</p>
-					<p>Performing the long division</p>
+					<p><strong>Slant Asymptotes:</strong></p>
+					<p>Performing the long division.</p>
 					\[ \begin{array}{r} 2x+2 \phantom{\quad} \\[-2pt] x^2-x-6
 					\overline{\smash{)}\, 2x^3-3x+1\phantom{)}} \\[-2pt]
 					\underline{-\,(2x^3-2x^2-12x)\phantom{)}} \\[-2pt]
