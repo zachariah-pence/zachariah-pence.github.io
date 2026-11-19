@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>
+			Exam 4 Supplemental Problems: Definite Integrals, Fundamental
+			Theorem of Calculus, Numerical Integration, and Exponential
+			Growth/Decay
+		</title>
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [['\\(', '\\)']],
+					displayMath: [['\\[', '\\]']],
+					processEscapes: true
+				},
+				options: {
+					skipHtmlTags: [
+						'script',
+						'noscript',
+						'style',
+						'textarea',
+						'code',
+						'pre'
+					]
+				}
+			}
+		</script>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+		<script>
+			window.D2L = { mathJaxLoaded: true }
+		</script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+			:root {
+				--purple: #581c87;
+				--purple-50: #faf5ff;
+				--purple-100: #f3e8ff;
+				--indigo-600: #4f46e5;
+				--indigo-50: #eef2ff;
+				--slate-900: #1e293b;
+				--slate-700: #334155;
+				--slate-400: #595959;
+				--slate-300: #cbd5e1;
+				--slate-200: #e2e8f0;
+				--slate-50: #f8fafc;
+				--rose-500: #f43f5e;
+				--rose-700: #be123c;
+				--rose-50: #fff1f2;
+				--emerald-600: #059669;
+				--emerald-700: #047857;
+				--emerald-50: #ecfdf5;
+				--amber-600: #d97706;
+				--amber-700: #b45309;
+				--amber-50: #fffbeb;
+				--fg-1: var(--slate-900);
+				--fg-2: var(--slate-700);
+				--fg-3: var(--slate-400);
+				--border: var(--slate-200);
+				--rule: var(--slate-300);
+				--accent: var(--purple);
+				--bg: #ffffff;
+				--bg-soft: var(--slate-50);
+				--font-display:
+					'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI',
+					sans-serif;
+				--font-body:
+					'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+					Roboto, sans-serif;
+				--font-mono:
+					ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas,
+					monospace;
+				--measure: 68ch;
+			}
+			#main * {
+				box-sizing: border-box;
+			}
+			html {
+				-webkit-text-size-adjust: 100%;
+			}
+			body {
+				margin: 0;
+				background: var(--bg);
+				color: var(--fg-1);
+				font-family: var(--font-body);
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				text-rendering: optimizeLegibility;
+				-webkit-font-smoothing: antialiased;
+			}
+			#main {
+				max-width: 920px;
+				margin: 0 auto;
+				padding: 4rem 3.5rem 6rem;
+			}
+			@media (max-width: 640px) {
+				#main {
+					padding: 2rem 1.25rem 4rem;
+				}
+				body {
+					font-size: 1rem;
+				}
+			}
+			#main > * + * {
+				margin-top: 1.1em;
+			}
+			a:focus-visible {
+				outline: 3px solid var(--accent);
+				outline-offset: 2px;
+				border-radius: 2px;
+			}
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-family: var(--font-display);
+				margin: 2.2em 0 0.4em;
+				font-weight: 700;
+				line-height: 1.25;
+				letter-spacing: -0.01em;
+			}
+			h2 {
+				font-size: 2.25rem;
+				margin-top: 1.6em;
+				letter-spacing: -0.014em;
+			}
+			h3 {
+				font-size: 1.75rem;
+				letter-spacing: -0.012em;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid var(--border);
+			}
+			h4 {
+				font-size: 1.375rem;
+			}
+			h5 {
+				font-size: 1.125rem;
+				color: var(--fg-2);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+			h6 {
+				font-size: 1rem;
+			}
+			p {
+				margin: 0 0 1.1em;
+			}
+			strong {
+				font-weight: 700;
+			}
+			em {
+				font-style: italic;
+			}
+			small {
+				font-size: 0.85em;
+				color: var(--fg-2);
+			}
+			del {
+				color: var(--fg-3);
+			}
+			ins {
+				background: var(--emerald-50);
+				text-decoration: none;
+				padding: 0 0.125rem;
+				border-radius: 2px;
+			}
+			mark {
+				background: #fef9c3;
+				color: var(--slate-900);
+				padding: 0 0.1875rem;
+				border-radius: 2px;
+			}
+			sub,
+			sup {
+				font-size: 0.75em;
+			}
+			abbr[title] {
+				border-bottom: 1px dotted var(--fg-3);
+				cursor: help;
+			}
+			a {
+				color: var(--accent);
+				text-decoration: underline;
+				text-decoration-color: var(--purple-100);
+				text-underline-offset: 3px;
+				text-decoration-thickness: 1.5px;
+				transition: text-decoration-color 120ms;
+			}
+			a:hover {
+				text-decoration-color: var(--accent);
+			}
+			ul,
+			ol {
+				padding-left: 1.6em;
+			}
+			li {
+				margin: 0.35em 0;
+			}
+			ul ul,
+			ol ol,
+			ul ol,
+			ol ul {
+				margin-top: 0.35em;
+				margin-bottom: 0.35em;
+			}
+			dl {
+				display: grid;
+				grid-template-columns: max-content 1fr;
+				column-gap: 24px;
+				row-gap: 8px;
+			}
+			dt {
+				font-family: var(--font-display);
+				font-weight: 700;
+			}
+			dd {
+				margin: 0;
+				color: var(--fg-2);
+			}
+			blockquote {
+				margin: 1.6em 0;
+				padding: 0.875rem 1.375rem;
+				border-left: 4px solid var(--accent);
+				background: var(--purple-50);
+				border-radius: 0 12px 12px 0;
+				font-style: italic;
+			}
+			blockquote > :last-child {
+				margin-bottom: 0;
+			}
+			blockquote cite {
+				display: block;
+				margin-top: 0.5rem;
+				font-style: normal;
+				font-size: 0.85em;
+				color: var(--fg-2);
+			}
+			blockquote cite::before {
+				content: '— ';
+				color: var(--fg-3);
+			}
+			code {
+				font-family: var(--font-mono);
+				font-size: 0.88em;
+				background: var(--bg-soft);
+				color: var(--slate-900);
+				padding: 0.125rem 0.375rem;
+				border-radius: 6px;
+				border: 1px solid var(--border);
+			}
+			pre {
+				font-family: var(--font-mono);
+				font-size: 0.875rem;
+				line-height: 1.55;
+				background: var(--slate-900);
+				color: #e2e8f0;
+				padding: 1.125rem 1.375rem;
+				border-radius: 12px;
+				overflow-x: auto;
+				margin: 1.6em 0;
+			}
+			pre code {
+				background: transparent;
+				border: 0;
+				padding: 0;
+				font-size: inherit;
+				color: inherit;
+				border-radius: 0;
+			}
+			kbd {
+				font-family: var(--font-mono);
+				font-size: 0.82em;
+				padding: 0.125rem 0.4375rem;
+				background: #fff;
+				border: 1px solid var(--rule);
+				border-bottom-width: 2px;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 var(--rule);
+			}
+			mjx-container[jax][display='true'] {
+				display: block;
+				margin: 1.6em auto;
+				padding: 1.5rem 1.75rem;
+				background: var(--bg-soft);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				text-align: center;
+				font-family: var(--font-math);
+				font-size: 1.375rem;
+				overflow-x: auto;
+				position: relative;
+			}
+			figure,
+			figcaption details summary {
+				text-align: center;
+			}
+			figure {
+				margin: 2em 0;
+				padding: 0;
+			}
+			figure img,
+			figure svg,
+			figure video {
+				max-width: 100%;
+				height: auto;
+				border-radius: 10px;
+				background: var(--bg-soft);
+				border: 1px solid var(--border);
+			}
+			figcaption {
+				margin-top: 0.75rem;
+				font-size: 0.875rem;
+				color: var(--fg-2);
+				font-style: italic;
+				max-width: var(--measure);
+				margin-left: auto;
+				margin-right: auto;
+			}
+			figcaption details {
+				text-align: left;
+			}
+			figcaption strong {
+				font-style: normal;
+				color: var(--fg-1);
+			}
+			.table-wrap {
+				overflow-x: auto;
+				margin: 1.6em 0;
+			}
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				font-size: 0.9375rem;
+			}
+			thead th {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.75rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--fg-2);
+				text-align: left;
+				padding: 0.625rem 0.875rem;
+				border-bottom: 2px solid var(--rule);
+			}
+			tbody td {
+				padding: 0.625rem 0.875rem;
+				border-bottom: 1px solid var(--border);
+			}
+			tbody tr:hover td {
+				background: var(--bg-soft);
+			}
+			tfoot td {
+				padding: 0.625rem 0.875rem;
+				font-family: var(--font-display);
+				font-weight: 700;
+				border-top: 2px solid var(--rule);
+			}
+			.callout {
+				display: grid;
+				grid-template-columns: 28px 1fr;
+				gap: 14px;
+				padding: 1rem 1.125rem;
+				border-radius: 12px;
+				border-left: 4px solid;
+				margin: 1.6em 0;
+				align-items: start;
+			}
+			.callout > svg,
+			.conversion-error-title > svg {
+				width: 22px;
+				height: 22px;
+				margin-top: 0.125rem;
+				flex: 0 0 auto;
+			}
+			.callout > div > :first-child {
+				margin-top: 0;
+			}
+			.callout > div > :last-child {
+				margin-bottom: 0;
+			}
+			.callout p,
+			.conversion-error p {
+				font-size: 0.9375rem;
+			}
+			.callout-title,
+			.conversion-error-title {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.875rem;
+				letter-spacing: 0.02em;
+				margin: 0 0 0.25rem;
+			}
+			.callout.note {
+				background: var(--indigo-50);
+				border-color: var(--indigo-600);
+			}
+			.callout.tip {
+				background: var(--emerald-50);
+				border-color: var(--emerald-600);
+			}
+			.callout.warn {
+				background: var(--amber-50);
+				border-color: var(--amber-600);
+			}
+			.callout.danger {
+				background: var(--rose-50);
+				border-color: var(--rose-500);
+			}
+			.callout.note .callout-title {
+				color: var(--indigo-600);
+			}
+			.callout.tip .callout-title {
+				color: var(--emerald-700);
+			}
+			.callout.warn .callout-title {
+				color: var(--amber-700);
+			}
+			.callout.danger .callout-title {
+				color: var(--rose-700);
+			}
+			.callout.note > svg {
+				color: var(--indigo-600);
+			}
+			.callout.tip > svg {
+				color: var(--emerald-700);
+			}
+			.callout.warn > svg {
+				color: var(--amber-700);
+			}
+			.callout.danger > svg {
+				color: var(--rose-700);
+			}
+			.conversion-error {
+				background: var(--rose-50);
+				border: 2px solid var(--rose-700);
+				border-radius: 12px;
+			}
+			.conversion-error-title {
+				background: var(--rose-700);
+				color: #fff;
+				padding: 0 1.125rem 0.5rem 1.125rem;
+				display: flex;
+				border-radius: 10px 10px 0 0;
+			}
+			.conversion-error-title > svg {
+				margin: 0.5rem 1.35rem 0 0;
+			}
+			.conversion-error .conversion-error-title > p {
+				margin: 0.5rem 0 0 0;
+				padding: 0;
+			}
+			.conversion-error p {
+				padding: 0.5rem 1.125rem 0rem 1.125rem;
+			}
+			hr {
+				border: 0;
+				height: 1px;
+				background: var(--border);
+				margin: 2.2em 0;
+			}
+			.footnote-ref a {
+				font-size: 0.75em;
+				vertical-align: super;
+				padding: 0 0.25rem;
+				text-decoration: none;
+				color: var(--accent);
+				font-weight: 700;
+			}
+			.footnotes {
+				margin-top: 3em;
+				padding-top: 1.6em;
+				border-top: 1px solid var(--border);
+				font-size: 0.875rem;
+				color: var(--fg-2);
+			}
+			.footnotes ol {
+				padding-left: 1.4em;
+			}
+			.footnotes li {
+				margin: 0.5em 0;
+			}
+			.footnotes a.back {
+				margin-left: 0.375rem;
+				text-decoration: none;
+			}
+			@media print {
+				body {
+					font-size: 0.916667rem;
+					color: #000;
+					background: #fff;
+				}
+				#main {
+					max-width: none;
+					padding: 0;
+				}
+				h2 {
+					break-after: avoid;
+				}
+				figure,
+				pre,
+				.math-display,
+				table {
+					break-inside: avoid;
+				}
+				a {
+					color: #000;
+					text-decoration: underline;
+				}
+				a[href]::after {
+					content: ' (' attr(href) ')';
+					font-size: 0.85em;
+					color: #555;
+				}
+				.callout {
+					border-left-width: 3px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<article id="main">
+			<section>
+				<h1>
+					&ldquo;Exam 4&rdquo; Supplemental Problems (Answer Key)
+				</h1>
+				<div class="callout note">
+					<svg
+						aria-hidden="true"
+						viewBox="0 0 24 24"
+						fill="currentColor">
+						<path
+							d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
+					</svg>
+					<div>
+						<p class="callout-title">NOTE:</p>
+						<p>
+							These are just review problems of Lectures 29-35;
+							these are not necessarily representative of the
+							problems of the exam. The exam can (and most likely
+							will) have different problems.
+						</p>
+					</div>
+				</div>
+				<section>
+					<h3>Topics for final:</h3>
+					<p>Everything (it is cumulative).</p>
+				</section>
+				<section>
+					<h3>Topics After Exam 3:</h3>
+					<ul>
+						<li>
+							<strong>Lecture 29-30:</strong> Definite Integrals
+						</li>
+						<li>
+							<strong>Lecture 31-32:</strong> The Fundamental
+							Theorem of Calculus
+						</li>
+						<li>
+							<strong>Lecture 33:</strong> Numerical Integration
+						</li>
+						<li><strong>Lecture 34:</strong> Exponential Growth</li>
+						<li><strong>Lecture 35:</strong> Exponential Decay</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Problem 1.</h3>
+					<p>The <strong>error function</strong> is defined as:</p>
+					\[ \operatorname{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x
+					e^{-t^2} \, dt \]
+					<ol type="a">
+						<li>
+							<p>
+								Show that \( \int_a^b e^{-t^2} \, dt =
+								\frac{\sqrt{\pi}}{2}[\operatorname{erf}(b) -
+								\operatorname{erf}(a)] \). [Hint: Combine the
+								right-hand-side into 1 integral].
+							</p>
+							<p><strong>Follow the hint:</strong></p>
+							\[ \begin{gathered}
+							\frac{\sqrt{\pi}}{2}\left[\operatorname{erf}(b) -
+							\operatorname{erf}(a)\right] =
+							\frac{\sqrt{\pi}}{2}\left[ \frac{2}{\sqrt{\pi}}
+							\int_0^b e^{-t^2} \, dt - \frac{2}{\sqrt{\pi}}
+							\int_0^a e^{-t^2} \, dt \right] \\[0.5em] = \int_0^b
+							e^{-t^2} \, dt - \int_0^a e^{-t^2} \, dt = \int_0^b
+							e^{-t^2} \, dt + \int_a^0 e^{-t^2} \, dt \\[0.5em] =
+							\int_a^b e^{-t^2} \, dt \end{gathered} \]
+						</li>
+						<li>
+							<p>
+								Approximate the value of erf(2) by using 6
+								trapezoids. Round to 4 decimal places.
+							</p>
+							\[ \operatorname{erf}(2) = \frac{2}{\sqrt{\pi}}
+							\int_0^2 e^{-t^2} \, dt \approx \frac{2}{\sqrt{\pi}}
+							T_6 . \qquad \text{Find } \Delta x = \frac{2-0}{6} =
+							\frac{1}{3} \] \[ \begin{aligned} T_6 &=
+							\frac{1/3}{2}\left[ f(0) +
+							2f\!\left(\tfrac{1}{3}\right) +
+							2f\!\left(\tfrac{2}{3}\right) + 2f(1) +
+							2f\!\left(\tfrac{4}{3}\right) +
+							2f\!\left(\tfrac{5}{3}\right) + f(2) \right] \\ &=
+							\frac{1}{6}\left[ 1 + 2e^{-\frac{1}{9}} +
+							2e^{-\frac{4}{9}} + 2e^{-1} + 2e^{-\frac{16}{9}} +
+							2e^{-\frac{25}{9}} + e^{-4} \right] \\ &=
+							\frac{1}{6}\left[ 1 + 1.7897 + 1.2824 + 0.7358 +
+							0.3380 + 0.1244 + 0.0183 \right] \\ &=
+							\frac{1}{6}\left[ 5.2886 \right] = 0.8814
+							\end{aligned} \]
+							<p>
+								So, \( \operatorname{erf}(2) \approx
+								\frac{2}{\sqrt{\pi}} T_6 =
+								\frac{2}{\sqrt{\pi}}(0.8814) = 0.9946 \)
+							</p>
+							<p>
+								For context, \( \operatorname{erf}(2) \approx
+								0.9953 22 \ldots \)
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Problem 2.</h3>
+					<p>Compute the following integral:</p>
+					\[ \begin{gathered} \int_{-\pi}^{\pi}
+					\sin^2\left(\frac{x}{2}\right) \, dx \\[0.5em] \left[
+					\text{Hint: } \sin^2\left(\frac{x}{2}\right) =
+					\frac{1-\cos(x)}{2} \right] \\[0.5em] \int
+					\sin^2\left(\frac{x}{2}\right) dx
+					\overset{\text{Hint}}{=\!=} \int \left( \frac{1-\cos x}{2}
+					\right) dx \\[0.5em] = \frac{1}{2} \int (1 - \cos x) \, dx
+					\\[0.5em] = \frac{1}{2}\left[ x - \sin x \right] + C
+					\end{gathered} \]
+					<p><strong>So,</strong></p>
+					\[ \begin{gathered} \int_{-\pi}^{\pi}
+					\sin^2\left(\frac{x}{2}\right) dx = \frac{1}{2}\left[ x -
+					\sin x \right]_{-\pi}^{\pi} \\[0.5em] = \frac{1}{2}\left[
+					(\pi - 0) - (-\pi - 0) \right] \\[0.5em] = \frac{1}{2}\left[
+					2\pi - 0 + 0 \right] \\[0.5em] = \frac{1}{2}\left[ 2\pi
+					\right] \\[0.5em] = \pi \end{gathered} \]
+				</section>
+				<section>
+					<h3>Problem 3.</h3>
+					<p>
+						The marginal cost of manufacturing \( x \) yards of a
+						certain fabric is \( C'(x) = 3 - 0.01x + 0.000006x^2 \)
+						(in dollars per yard). Find the increase in cost if the
+						production level is raised from 2000 yards to 4000
+						yards.
+					</p>
+					<p>Need to find \( C(4000) - C(2000) \)</p>
+					\[ \begin{gathered} C(4000) - C(2000)
+					\;\overset{\substack{\text{FTC}/ \\ \text{Net Change
+					Thm}}}{=\!=\!=}\; \int_{2000}^{4000} C'(t)\, dt \\[0.5em]
+					\int_{2000}^{4000} C'(t)\, dt = \int_{2000}^{4000} \left[ 3
+					- 0.01x + 0.000006x^2 \right] dx \\[0.5em] = \left[ 3x -
+					0.01 \cdot \tfrac{1}{2} x^2 + 0.000006 \cdot \tfrac{1}{3}
+					x^3 \right]_{2000}^{4000} \\[0.5em] = \left[ 3(4000) -
+					\frac{0.01}{2}(4000)^2 + \frac{0.000006}{3}(4000)^3 \right]
+					- \left[ 3(2000) - \frac{0.01}{2}(2000)^2 +
+					\frac{0.000006}{3}(2000)^3 \right] \\[0.5em] = 60000 - 2000
+					= \$58000 \end{gathered} \]
+				</section>
+				<section>
+					<h3>Problem 4.</h3>
+					<p>
+						The half-life of Radium-226 (\( {}^{226}_{88}\mathrm{Ra}
+						\)) is 1590 years.
+					</p>
+					<ol type="a">
+						<li>
+							<p>
+								If a sample of \( {}^{226}_{88}\mathrm{Ra} \)
+								has a mass of 100mg, what percentage of the
+								sample is left after 1000 years?
+							</p>
+							<p><strong>Determine \( k \):</strong></p>
+							\[ \begin{gathered} \tfrac{1}{2} \cdot 100 = 100
+							e^{1590k} \\[0.5em] \tfrac{1}{2} = e^{1590k}
+							\\[0.5em] \ln \tfrac{1}{2} = 1590k \\[0.5em] k =
+							\frac{\ln \tfrac{1}{2}}{1590} = -\frac{\ln 2}{1590}
+							\approx 0.000436 \end{gathered} \]
+							<p>So, \( P_{(t)} = 100 e^{-0.000436t} \)</p>
+							<p>
+								Compute \( P_{(1000)} = 100 e^{-0.000436(1000)}
+								= 100 e^{-0.436} \approx 65\text{mg} \)
+							</p>
+							<p>
+								\( \left[ \frac{65}{100} \right] \cdot 100 =
+								65\% \) of the sample is left
+							</p>
+						</li>
+						<li>
+							<p>When will the mass be reduced to 30mg?</p>
+							\[ \begin{gathered} 30 = 100 e^{kt} \\[0.5em]
+							\tfrac{3}{10} = e^{kt} \\[0.5em] \ln \tfrac{3}{10} =
+							kt \\[0.5em] t = -\frac{\ln(3/10)}{k} \end{gathered}
+							\]
+							<p>We found \( k = -\frac{\ln 2}{1590} \), so</p>
+							\[ t = -\frac{\ln(3/10)}{\left(-\frac{\ln
+							2}{1590}\right)} =
+							\left(\frac{\ln\left(\frac{3}{10}\right)}{\ln
+							2}\right)(1590) \approx 2761.78 \]
+							<p>
+								It takes roughly \( 2761.78 \) years to reduce
+								the sample to 30 mg.
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Problem 5.</h3>
+					<p>
+						How long will be take for an investment to double if the
+						interest rate is 6% compounded continuously?
+					</p>
+					\[ \begin{gathered} 2 = 1 e^{0.06t} \\[0.5em] \ln(2) = 0.06t
+					\\[0.5em] t = \frac{\ln(2)}{0.06} \\[0.5em] t \approx 11.55
+					\text{ years} \end{gathered} \]
+				</section>
+			</section>
+		</article>
+	</body>
+</html>
